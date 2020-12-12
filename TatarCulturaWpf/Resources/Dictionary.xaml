@@ -1,0 +1,69 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TatarCulturaWpf.Resources">
+
+    <SolidColorBrush x:Key="Red" Color="#C20031"/>
+    <SolidColorBrush x:Key="RedDark" Color="#960018"/>
+
+    <SolidColorBrush x:Key="Green" Color="#009900"/>
+    <SolidColorBrush x:Key="GreenDark" Color="#007500"/>
+
+    <Style x:Key="ButtonRed" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource Red}"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="30"/>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Control.IsFocused" Value="True" />
+                    <Condition Property="Control.IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Control.Background" Value="DarkRed" />
+                    <Setter Property="Control.Foreground" Value="White"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="ButtonUI" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="{DynamicResource RedDark}"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="30"/>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Control.IsFocused" Value="True" />
+                    <Condition Property="Control.IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Control.Background" Value="White" />
+                    <Setter Property="Control.Foreground" Value="{DynamicResource RedDark}"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </Style.Triggers>
+
+    </Style>
+
+
+
+    <Style x:Key="LabelRed" TargetType="Label">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="{DynamicResource Red}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="base_win" TargetType="Window">
+    </Style>
+
+
+
+</ResourceDictionary>

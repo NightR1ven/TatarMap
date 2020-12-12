@@ -1,0 +1,54 @@
+﻿<Page x:Class="TatarCulturaWpf.Pages.AddUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TatarCulturaWpf.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddUserPage" IsVisibleChanged="PageIsVisibleChanged">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Row="0" Grid.ColumnSpan="2" />
+
+
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Логин:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Пароль:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Пароль повторно:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Роль:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
+
+
+            <TextBox x:Name="tbLogin" Text="{Binding Login}"  Grid.Row="1" Grid.Column="1" FontSize="18" Padding="0,2"/>
+            <ComboBox x:Name="cmbRol"  SelectedItem="{Binding UserRol}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Stretch" 
+                     FontSize="18" DisplayMemberPath="NameRols" SelectedValuePath="IdRols"/>
+            <TextBox x:Name="tbPassword" Text="{Binding Password}"  Grid.Row="2" Grid.Column="1" FontSize="18" Padding="0,2"/>
+            <TextBox x:Name="tbPassword1" Grid.Row="3" Grid.Column="1" FontSize="18" Padding="0,2"/>
+        </Grid>
+
+        <StackPanel  Grid.Row="5" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="BtnSave" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnSaveClick"/>
+            <Button x:Name="BtnCancel" Grid.Row="5" Content="Отмена" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnCancelClick"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

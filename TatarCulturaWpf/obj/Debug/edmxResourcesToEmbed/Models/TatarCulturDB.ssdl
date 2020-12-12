@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище TatarCulturDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="IdComment" />
+    </Key>
+    <Property Name="IdComment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUser" Type="int" />
+    <Property Name="IdObject" Type="int" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="IdEvent" />
+    </Key>
+    <Property Name="IdEvent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Coin" Type="int" />
+    <Property Name="DateStarEvent" Type="date" />
+    <Property Name="DateEndEvent" Type="date" />
+  </EntityType>
+  <EntityType Name="Object">
+    <Key>
+      <PropertyRef Name="IdObject" />
+    </Key>
+    <Property Name="IdObject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdType" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ObjectPhoto" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Star">
+    <Key>
+      <PropertyRef Name="IdStar" />
+    </Key>
+    <Property Name="IdStar" Type="int" Nullable="false" />
+    <Property Name="IdUser" Type="int" />
+    <Property Name="IdObject" Type="int" />
+    <Property Name="Star" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="IdType" />
+    </Key>
+    <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdEvent" Type="int" />
+    <Property Name="Coin" Type="int" />
+    <Property Name="IdRols" Type="int" />
+    <Property Name="UserPhoto" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserRols">
+    <Key>
+      <PropertyRef Name="IdRols" />
+    </Key>
+    <Property Name="IdRols" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameRols" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Comment_Object">
+    <End Role="Object" Type="Self.Object" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="IdObject" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="IdObject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Object_Type">
+    <End Role="Type" Type="Self.Type" Multiplicity="1" />
+    <End Role="Object" Type="Self.Object" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="IdType" />
+      </Principal>
+      <Dependent Role="Object">
+        <PropertyRef Name="IdType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Star_Object">
+    <End Role="Object" Type="Self.Object" Multiplicity="0..1" />
+    <End Role="Star" Type="Self.Star" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="IdObject" />
+      </Principal>
+      <Dependent Role="Star">
+        <PropertyRef Name="IdObject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Star_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Star" Type="Self.Star" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Star">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="IdEvent" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdEvent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserRols">
+    <End Role="UserRols" Type="Self.UserRols" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRols">
+        <PropertyRef Name="IdRols" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRols" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище TatarCulturDbModelContainer">
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Object" EntityType="Self.Object" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Star" EntityType="Self.Star" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRols" EntityType="Self.UserRols" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Comment_Object" Association="Self.FK_Comment_Object">
+      <End Role="Object" EntitySet="Object" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Object_Type" Association="Self.FK_Object_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Object" EntitySet="Object" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Star_Object" Association="Self.FK_Star_Object">
+      <End Role="Object" EntitySet="Object" />
+      <End Role="Star" EntitySet="Star" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Star_User" Association="Self.FK_Star_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Star" EntitySet="Star" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Event" Association="Self.FK_User_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserRols" Association="Self.FK_User_UserRols">
+      <End Role="UserRols" EntitySet="UserRols" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
