@@ -9,6 +9,35 @@
       Title="PageUser">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1"  Text="{Binding Description}"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="{Binding Name}" Grid.Row="0" VerticalAlignment="Bottom"/>
+                <Label Content="{Binding Type.Name}" Grid.Row="1" VerticalAlignment="Top"/>
+            </Grid>
+            <Image Width="240" Grid.Row="0" Stretch="Uniform" Source="{Binding Path=GetObjectPhoto}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+
+            <ListView>
+
+            </ListView>
+
+            
+        </Grid>
+
     </Grid>
 </Page>
