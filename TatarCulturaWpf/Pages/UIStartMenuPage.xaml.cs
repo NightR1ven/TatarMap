@@ -70,7 +70,7 @@ namespace TatarCulturaWpf.Pages
 
         private void MapClick(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new PageObject());
+            Manager.MainFrame.Navigate(new PageObject(null));
         }
     }
 }

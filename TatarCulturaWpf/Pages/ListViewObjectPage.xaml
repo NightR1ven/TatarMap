@@ -33,7 +33,7 @@
         </WrapPanel>
 
         <ListView x:Name="LViewObject" Grid.Row="1"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="LViewObjectSelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>

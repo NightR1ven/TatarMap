@@ -68,5 +68,13 @@ namespace TatarCulturaWpf.Pages
             LViewObject.ItemsSource = _currentObject;
             TextBlockCount.Text = $"Результат запроса: {_currentObject.Count} записей из {_itemcount}";
         }
+
+        private void LViewObjectSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (LViewObject.SelectedIndex >= 0)
+            {
+                Manager.MainFrame.Navigate(new PageObject(LViewObject.SelectedItem as Models.Object));
+            }
+        }
     }
 }

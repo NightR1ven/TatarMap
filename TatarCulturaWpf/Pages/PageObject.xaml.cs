@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TatarCulturaWpf.Models;
 
 namespace TatarCulturaWpf.Pages
 {
@@ -21,9 +22,16 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class PageObject : Page
     {
-        public PageObject()
+        private Models.Object _currentObject = new Models.Object();
+
+        public PageObject(Models.Object tatObject)
         {
             InitializeComponent();
+            if (tatObject != null)
+            {
+                _currentObject = tatObject;
+            }
+            this.DataContext = _currentObject;
         }
 
         private void MapZelMouseUp(object sender, MouseButtonEventArgs e)
@@ -67,6 +75,14 @@ namespace TatarCulturaWpf.Pages
         private void TextBlockCoordsMouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void PageIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            }
         }
     }
 }
