@@ -12,14 +12,15 @@ namespace TatarCulturaWpf.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class TatarCulturDbEntities : DbContext
     {
-        private static TatarCulturDbEntities _context;
         public TatarCulturDbEntities()
             : base("name=TatarCulturDbEntities")
         {
         }
+
+        private static TatarCulturDbEntities _context;
 
         public static TatarCulturDbEntities GetContext()
         {
@@ -35,11 +36,11 @@ namespace TatarCulturaWpf.Models
     
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Event> Events { get; set; }
-        public virtual DbSet<Object> Objects { get; set; }
         public virtual DbSet<Star> Stars { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRol> UserRols { get; set; }
+        public virtual DbSet<Object> Objects { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

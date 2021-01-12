@@ -27,12 +27,8 @@ namespace TatarCulturaWpf.Models
         public string Name { get; set; }
         public string ObjectPhoto { get; set; }
         public string Description { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual Type Type { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Star> Stars { get; set; }
+        public Nullable<double> Latitude { get; set; }
+        public Nullable<double> Longitude { get; set; }
 
         public string GetObjectPhoto
         {
@@ -43,5 +39,21 @@ namespace TatarCulturaWpf.Models
                 return Directory.GetCurrentDirectory() + @"\Images\" + ObjectPhoto.Trim();
             }
         }
+
+        public string Geo
+        {
+            get
+            {
+                if (Latitude == 0)
+                    return null;
+                return $"{Latitude.ToString().Replace(",",".")} , {Longitude.ToString().Replace(",", ".")}";
+            }
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual Type Type { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Star> Stars { get; set; }
     }
 }

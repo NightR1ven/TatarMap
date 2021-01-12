@@ -18,7 +18,7 @@
                 <DataGridTemplateColumn Width="auto" Header="Editor">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="Editor" Content="Редактировать" Click="EditorClick"/>
+                            <Button x:Name="Editor" Content="Редактировать" Click="EditorClick" Style="{DynamicResource ButtonUI}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -36,7 +36,7 @@
                 <DataGridTemplateColumn Width="*" Header="Comment">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="EditorComment" Content="Редактировать" Click="EditorCommentClick"/>
+                            <Button x:Name="EditorComment" Content="Взгялнуть" Click="EditorCommentClick" Style="{DynamicResource ButtonUI}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -44,8 +44,8 @@
         </DataGrid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnAdd" Content="Добавить" Click="BtnAddClick"  Margin="5"/>
-            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5"/>
+            <Button x:Name="btnAdd" Content="Добавить" Click="BtnAddClick"  Margin="5" Style="{DynamicResource ButtonUIRed}"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIRed}"/>
         </StackPanel>
     </Grid>
 </Page>

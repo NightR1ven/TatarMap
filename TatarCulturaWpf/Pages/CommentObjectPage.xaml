@@ -24,8 +24,8 @@
         </DataGrid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnSave" Content="Сохранить" Click="btnSaveClick"  Margin="5"/>
-            <Button x:Name="btnDelete" Content="Удалить" Click="btnDeleteClick" Margin="5"/>
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSaveClick"  Margin="5" Style="{DynamicResource ButtonUIRed}"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="btnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIRed}"/>
         </StackPanel>
     </Grid>
 </Page>

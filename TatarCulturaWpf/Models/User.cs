@@ -11,8 +11,7 @@ namespace TatarCulturaWpf.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
-
+    
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -36,15 +35,5 @@ namespace TatarCulturaWpf.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Star> Stars { get; set; }
         public virtual UserRol UserRol { get; set; }
-
-        public string GetUserPhoto
-        {
-            get
-            {
-                if (UserPhoto is null)
-                    return null;
-                return Directory.GetCurrentDirectory() + @"\Images\" + UserPhoto.Trim();
-            }
-        }
     }
 }

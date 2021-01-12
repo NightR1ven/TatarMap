@@ -50,8 +50,20 @@ namespace TatarCulturaWpf.Pages
                 s.AppendLine("Поле описание пустое");
             if (_currentObject.Type == null)
                 s.AppendLine("Тип не выбрана");
-            if (string.IsNullOrWhiteSpace(tbPhotoName.Text))
-                s.AppendLine("Фото не выбрано пустое");
+            //if (string.IsNullOrWhiteSpace(tbPhotoName.Text))
+            //    s.AppendLine("Фото не выбрано пустое");
+            if (_currentObject.Latitude == null) ;
+            s.AppendLine("Поле ширины пустое");
+            if (_currentObject.Longitude == null) ;
+            s.AppendLine("Поле долгота пустое");
+            if (_currentObject.Latitude > 90) ;
+            s.AppendLine("Поле ширины не корректно");
+            if (_currentObject.Latitude < -90) ;
+            s.AppendLine("Поле ширины не корректно");
+            if (_currentObject.Longitude > 180) ;
+            s.AppendLine("Поле долгота не корректно");
+            if (_currentObject.Longitude > -180) ;
+            s.AppendLine("Поле долгота не корректно");
             return s;
         }
 
@@ -75,6 +87,7 @@ namespace TatarCulturaWpf.Pages
         private void BtnSaveClick(object sender, RoutedEventArgs e)
         {
             StringBuilder _error = CheckFields();
+
             if (_error.Length > 0)
             {
                 MessageBox.Show(_error.ToString());

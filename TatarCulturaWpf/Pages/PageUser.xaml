@@ -28,7 +28,7 @@
                 <Label Content="{Binding Name}" Grid.Row="0" VerticalAlignment="Bottom"/>
                 <Label Content="{Binding Type.Name}" Grid.Row="1" VerticalAlignment="Top"/>
             </Grid>
-            <Image Width="240" Grid.Row="0" Stretch="Uniform" Source="{Binding Path=GetObjectPhoto}"/>
+            <Image Width="240" Grid.Row="0" Stretch="Uniform" Source="{Binding Path=GetUserPhoto}"/>
         </Grid>
         <Grid Grid.Row="1">
 

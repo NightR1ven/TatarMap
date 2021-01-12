@@ -16,7 +16,7 @@
 
 
         <Button x:Name="BtnRegistration" Click="BtnRegistrationClick" Content="Регистрация" Grid.Row="0" HorizontalAlignment="Right"  Width="100" Height="20" 
-               Style="{DynamicResource ButtonRed}" FontSize="12" Margin="5"/>
+               Style="{DynamicResource ButtonUIRed}" FontSize="12" Margin="5"/>
 
         <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Grid.RowDefinitions>
@@ -47,10 +47,10 @@
         
         
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="5">
-            <Button x:Name="BtnEnter" Click="BtnEnterClick" Content="Enter" Style="{DynamicResource ButtonRed}" Margin="2" TabIndex="3">
+            <Button x:Name="BtnEnter" Click="BtnEnterClick" Content="Enter" Style="{DynamicResource ButtonUIRed}" Margin="2" TabIndex="3">
                 
             </Button>
-            <Button x:Name="BtnCancel" Click="BtnCancelClick" Content="Cancel" Style="{DynamicResource ButtonRed}" Margin="2"/>
+            <Button x:Name="BtnCancel" Click="BtnCancelClick" Content="Cancel" Style="{DynamicResource ButtonUIRed}" Margin="2"/>
             
         </StackPanel>
         

@@ -24,16 +24,16 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding Description}"/>
+            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding Description}" Style="{DynamicResource Text}"/>
             <Grid Grid.Row="0" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Content="{Binding Name}" Grid.Row="0" VerticalAlignment="Bottom"/>
-                <Label Content="{Binding Type.Name}" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="{Binding Name}" Grid.Row="0" VerticalAlignment="Bottom" Style="{DynamicResource LabelObject}"/>
+                <Label Content="{Binding Type.Name}" Grid.Row="1" VerticalAlignment="Top" Style="{DynamicResource LabelRed}"/>
             </Grid>
-            <Image Width="240" Grid.Row="1" Grid.Column="0" Stretch="Uniform" Source="{Binding Path=GetObjectPhoto}"/>
+            <Image  Grid.Row="1" Grid.Column="0" Stretch="Uniform" Source="{Binding Path=GetObjectPhoto}" Margin="10"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -47,13 +47,13 @@
             
             <m:Map x:Name="MapZel"
                CredentialsProvider="O8iF4ZBQsqcCMGkVHsdS~BCu3QRa0mmx1KDQPhtW8ng~AriBZUg-qGw6lWuI5238S5HctVTAi1xC1yO2iO0djFxh5ryRm6YSm-OA8-G3A5nc"
-               Grid.Column="1" Margin="10"
+               Grid.Column="1"
                ZoomLevel="15" 
                Mode="Road"
-               Center="55.84589999, 48.5066666" MouseMove="MapZelMouseMove" MouseLeave="MapZelMouseLeave" MouseUp="MapZelMouseUp">
+               Center="{Binding Path=Geo}" MouseMove="MapZelMouseMove" MouseLeave="MapZelMouseLeave" MouseUp="MapZelMouseUp">
 
                 <Canvas
-        m:MapLayer.Position="55.84589999, 48.5066666"
+        m:MapLayer.Position="{Binding Path=Geo}"
         m:MapLayer.PositionOrigin="BottomCenter" Width="30" Height="30"
         >
                     <materialDesign:PackIcon Kind="MapMarker" Width="30" Height="30" Foreground="#FF3C3C3C"/>
@@ -63,9 +63,9 @@
                                   Background="White"
                                   Foreground="#FF3A3A3A" 
                                   VerticalAlignment="Top" 
-                                  Margin="10 10"
+                                  Margin="5 5"
                                   BorderThickness="1" MouseUp="PackIconMouseUp" Width="30" Height="30" />
-            <TextBlock Grid.Column="0" Foreground="White" x:Name="TextBlockCoords" MouseDown="TextBlockCoordsMouseDown"/>
+            <TextBlock Grid.Column="0" Foreground="White" x:Name="TextBlockCoords" MouseDown="TextBlockCoordsMouseDown" Margin="10"/>
         </Grid>
         
     </Grid>

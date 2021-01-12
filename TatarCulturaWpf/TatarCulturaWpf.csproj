@@ -76,6 +76,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Object.cs">
+      <DependentUpon>TatarCulturDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>TatarCulturDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddObjectPage.xaml.cs">
       <DependentUpon>AddObjectPage.xaml</DependentUpon>
     </Compile>
@@ -179,13 +185,7 @@
     <Compile Include="Models\Event.cs">
       <DependentUpon>TatarCulturDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Object.cs">
-      <DependentUpon>TatarCulturDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Star.cs">
-      <DependentUpon>TatarCulturDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>TatarCulturDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TatarCulturDB.Context.cs">

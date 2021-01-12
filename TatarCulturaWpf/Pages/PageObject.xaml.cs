@@ -32,6 +32,7 @@ namespace TatarCulturaWpf.Pages
                 _currentObject = tatObject;
             }
             this.DataContext = _currentObject;
+            MessageBox.Show($"{_currentObject.Geo}");
         }
 
         private void MapZelMouseUp(object sender, MouseButtonEventArgs e)
@@ -68,7 +69,7 @@ namespace TatarCulturaWpf.Pages
 
         private void PackIconMouseUp(object sender, MouseButtonEventArgs e)
         {
-            Location pinLocation = new Location(55.799038, 49.105514);
+            Location pinLocation = new Location((double)_currentObject.Latitude, (double)_currentObject.Longitude);
             MapZel.Center = pinLocation;
         }
 

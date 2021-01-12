@@ -8,56 +8,61 @@
     <SolidColorBrush x:Key="Green" Color="#009900"/>
     <SolidColorBrush x:Key="GreenDark" Color="#007500"/>
 
-    <Style x:Key="ButtonRed" TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource Red}"/>
-        <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="FontSize" Value="18"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Width" Value="80"/>
-        <Setter Property="Height" Value="30"/>
-        <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Control.IsFocused" Value="True" />
-                    <Condition Property="Control.IsMouseOver" Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.Setters>
-                    <Setter Property="Control.Background" Value="DarkRed" />
-                    <Setter Property="Control.Foreground" Value="White"/>
-                </MultiTrigger.Setters>
-            </MultiTrigger>
-        </Style.Triggers>
-
-    </Style>
-
+    
     <Style x:Key="ButtonUI" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Foreground" Value="{DynamicResource RedDark}"/>
-        <Setter Property="Width" Value="80"/>
         <Setter Property="Height" Value="30"/>
-        <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Control.IsFocused" Value="True" />
-                    <Condition Property="Control.IsMouseOver" Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.Setters>
-                    <Setter Property="Control.Background" Value="White" />
-                    <Setter Property="Control.Foreground" Value="{DynamicResource RedDark}"/>
-                </MultiTrigger.Setters>
-            </MultiTrigger>
-        </Style.Triggers>
-
+        <Setter Property="BorderBrush" Value="{DynamicResource RedDark}"/>
     </Style>
 
+    <Style x:Key="ButtonUIPage" TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Height" Value="30"/>
+    </Style>
+
+    <Style x:Key="ButtonUIRed" TargetType="Button">
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Background" Value="{StaticResource RedDark}"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource RedDark}"/>
+    </Style>
 
 
     <Style x:Key="LabelRed" TargetType="Label">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="Foreground" Value="{DynamicResource Red}"/>
+        <Setter Property="Foreground" Value="{DynamicResource RedDark}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="LabelObject" TargetType="Label">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="Text" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+
+    <Style x:Key="LabelList" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 

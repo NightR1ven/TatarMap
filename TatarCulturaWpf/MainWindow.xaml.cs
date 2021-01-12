@@ -30,12 +30,7 @@ namespace TatarCulturaWpf
             Manager.MainFrame = MainFrame;
             rols1 = rols;
             BtnActive.Visibility = Visibility.Collapsed;
-            if (Manager.MainFrame.CanGoBack == true)
-            {
-                BtnBack.Visibility = Visibility.Visible;
-            }
-            else
-                BtnBack.Visibility = Visibility.Collapsed;
+           
 
         }
 
@@ -49,13 +44,8 @@ namespace TatarCulturaWpf
             BtnObject.Visibility = Visibility.Collapsed;
             BtnListObject.Visibility = Visibility.Collapsed;
             BtnListUsers.Visibility = Visibility.Collapsed;
-            if (Manager.MainFrame.CanGoBack == true)
-            {
-                BtnBack.Visibility = Visibility.Visible;
-
-            }
-            else
-                BtnBack.Visibility = Visibility.Collapsed;
+            BtnMenu.Visibility = Visibility.Collapsed;
+           
         }
 
         private void WindowClosed(object sender, EventArgs e)
@@ -104,15 +94,12 @@ namespace TatarCulturaWpf
         private void BtnObjectClick(object sender, RoutedEventArgs e)
         {
             TextBlockMain.Visibility = Visibility.Hidden;
-            MainFrame.Navigate(new ObjectListPage());
+            MainFrame.Navigate(new ListViewObjectPage());
         }
 
         private void BtnExitClick(object sender, RoutedEventArgs e)
         {
             Close();
-            Application.Current.Shutdown();
-
-
         }
 
 
@@ -137,6 +124,7 @@ namespace TatarCulturaWpf
 
         private void BtnListObjectClick(object sender, RoutedEventArgs e)
         {
+            Manager.MainFrame.Navigate(new ObjectListPage());
             TextBlockMain.Visibility = Visibility.Hidden;
         }
 
@@ -156,6 +144,12 @@ namespace TatarCulturaWpf
         private void BtnBackClick(object sender, RoutedEventArgs e)
         {
                 Manager.MainFrame.GoBack();
+        }
+
+        private void BtnMenuClick(object sender, RoutedEventArgs e)
+        {
+
+            Manager.MainFrame.Navigate(new UIStartMenuPage(rols1));
         }
     }
 }

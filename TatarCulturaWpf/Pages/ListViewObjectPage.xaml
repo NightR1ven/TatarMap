@@ -18,14 +18,14 @@
         <WrapPanel Grid.Row="0"
                    HorizontalAlignment="Stretch">
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Введите название для поска:"/>
-                <TextBox Width="275" x:Name="TBoxSearch"
+                <TextBox Width="275" Margin="5,0" x:Name="TBoxSearch"
                           TextChanged="TBoxSearchTextChanged"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Выберите тип места"/>
-                <ComboBox Width="275" x:Name="ComboType"
+                <ComboBox Width="275" Margin="5,0" x:Name="ComboType"
                           SelectionChanged="ComboTypeSelectionChanged"
                           DisplayMemberPath="Name"/>
             </StackPanel>
@@ -41,17 +41,16 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="20" Width="300">
+                    <Grid Margin="5" Width="300">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="310"/>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="30"/>
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
                         <Image Width="240" Grid.Row="0" Stretch="Uniform"  HorizontalAlignment="Center" Margin="5" Source="{Binding Path=GetObjectPhoto}"/>
-                        <StackPanel Grid.Row="1" Height="100">
-                            <TextBlock Padding="3" Height="auto" Text="{Binding Name}"/>
+                        <StackPanel Grid.Row="1" Height="100" HorizontalAlignment="Center">
+                            <TextBlock Padding="3" Height="auto" Text="{Binding Name}" Style="{DynamicResource Text}"/>
                         </StackPanel>
-                        <TextBlock Text="{Binding GetStatus}" Height="auto" Grid.Row="2"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

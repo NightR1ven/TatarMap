@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using TatarCulturaWpf.Models;
 using TatarCulturaWpf.Pages;
 
+
 namespace TatarCulturaWpf
 {
     /// <summary>

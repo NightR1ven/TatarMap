@@ -46,8 +46,8 @@
         </Grid>
 
         <StackPanel  Grid.Row="5" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="BtnSave" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnSaveClick"/>
-            <Button x:Name="BtnCancel" Grid.Row="5" Content="Отмена" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnCancelClick"/>
+            <Button x:Name="BtnSave" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnSaveClick" Style="{DynamicResource ButtonUIRed}"/>
+            <Button x:Name="BtnCancel" Grid.Row="5" Content="Отмена" Margin="2" VerticalAlignment="Bottom" Width="120"  Click="BtnCancelClick" Style="{DynamicResource ButtonUIRed}"/>
         </StackPanel>
 
     </Grid>

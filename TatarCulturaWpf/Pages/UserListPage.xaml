@@ -18,7 +18,7 @@
                 <DataGridTemplateColumn Width="auto" Header="Editor">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="Editor" Content="Редактировать" Click="EditorClick"/>
+                            <Button x:Name="Editor" Content="Редактировать" Click="EditorClick" Style="{DynamicResource ButtonUI}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -37,7 +37,6 @@ C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\Add
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\ObjectListPage.g.cs
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddObjectPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\ObjectListPage.baml
-C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.csprojAssemblyReference.cache
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\ListViewObjectPage.g.cs
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\ListViewObjectPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\CommentObjectPage.g.cs
@@ -54,3 +53,4 @@ C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\bin\Debug\Microsoft
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\PageObject.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\PageUser.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.csprojAssemblyReference.cache
