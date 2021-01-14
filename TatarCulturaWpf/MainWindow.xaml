@@ -48,7 +48,7 @@
             <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid Background="{DynamicResource Red}">
+    <Grid Background="{DynamicResource RedDark}">
         <StackPanel x:Name="StackPanelMenu" HorizontalAlignment="Left" Width="250" Margin="-250,1,0,-0.6" RenderTransformOrigin="0.5,0.5">
             <StackPanel.RenderTransform>
                 <TransformGroup>
@@ -58,8 +58,13 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </StackPanel.RenderTransform>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100">
-
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Height="120">
+                <Ellipse Width="65" Height="65" Panel.ZIndex="2" Margin="10">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding GetUserPhoto}" />
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Label Content="{Binding Login}" Style="{StaticResource LabelWhite}" HorizontalAlignment="Center"/>
             </StackPanel>
 
             <Button x:Name="BtnActive" Height="60" Click="BtnActiveClick" Style="{DynamicResource ButtonUI}">
@@ -123,11 +128,13 @@
                 <RowDefinition Height="387*"/>
                 <RowDefinition Height="239*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="BtnMenuOpen" Grid.Row="0" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenuOpenClick" Margin="0,2,0,2"  Style="{DynamicResource ButtonUIRed}"/>
-            <Button x:Name="BtnMenuClose" Grid.Row="0" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenuCloseClick" 
+            
+            <Image Source="Resources/T.png" HorizontalAlignment="Right" VerticalAlignment="Top" Width="180" Height="190" Stretch="Fill" Grid.Row="0" Panel.ZIndex="0"/>
+            <Button x:Name="BtnMenuOpen" Grid.Row="0" Content="Меню" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenuOpenClick" Margin="0,2,0,2"  Style="{DynamicResource ButtonUIRed}"/>
+            <Button x:Name="BtnMenuClose" Grid.Row="0" Content="Меню" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenuCloseClick" 
              Visibility="Hidden" Margin="0,2,0,2"  Style="{DynamicResource ButtonUIRed}"/>
-            <Button x:Name="BtnExit" Grid.Row="0" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Click="BtnExitClick" Margin="0,2,10,2"  Style="{DynamicResource ButtonUIRed}"/>
-            <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.RowSpan="2" />
+            <Button x:Name="BtnExit" Grid.Row="0" Content="Выйти" HorizontalAlignment="Right" VerticalAlignment="Center" Panel.ZIndex="1" Click="BtnExitClick" Margin="0,2,10,2"  Style="{DynamicResource ButtonUIRed}"/>
+            <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.RowSpan="2" BorderBrush="{StaticResource RedDark}" BorderThickness="2"/>
 
             <TextBlock x:Name="TextBlockMain" Grid.Row="1" Background="Gray" Opacity="0.3" Visibility="Collapsed" Grid.RowSpan="2"/>
         </Grid>

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Comments">
       <EntityTypeMapping TypeName="TatarCulturDbModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Star" ColumnName="Star" />
           <ScalarProperty Name="IdComment" ColumnName="IdComment" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
           <ScalarProperty Name="IdObject" ColumnName="IdObject" />
@@ -19,16 +20,6 @@
           <ScalarProperty Name="Coin" ColumnName="Coin" />
           <ScalarProperty Name="DateStarEvent" ColumnName="DateStarEvent" />
           <ScalarProperty Name="DateEndEvent" ColumnName="DateEndEvent" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Stars">
-      <EntityTypeMapping TypeName="TatarCulturDbModel.Star">
-        <MappingFragment StoreEntitySet="Star">
-          <ScalarProperty Name="IdStar" ColumnName="IdStar" />
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="IdObject" ColumnName="IdObject" />
-          <ScalarProperty Name="Star1" ColumnName="Star" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -44,14 +44,7 @@
 
            
         </StackPanel>
-        <StackPanel  Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button x:Name="Map" Visibility="Visible" Style="{DynamicResource ButtonUIPage}" Height="100"
-                Width="180" Margin="2.5" Click="MapClick">
-                <StackPanel>
-                    <Label Content="Карта"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+        
 
     </Grid>
 </Page>

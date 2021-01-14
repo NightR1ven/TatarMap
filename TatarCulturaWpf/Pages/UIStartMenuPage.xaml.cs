@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TatarCulturaWpf.Models;
 
 namespace TatarCulturaWpf.Pages
 {
@@ -20,7 +21,9 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class UIStartMenuPage : Page
     {
-        public UIStartMenuPage(int rols)
+        User user1;
+        int rols1;
+        public UIStartMenuPage(int rols, User user)
         {
             InitializeComponent();
             switch (rols)
@@ -43,8 +46,9 @@ namespace TatarCulturaWpf.Pages
                     }
                     break;
             }
-           
-            
+
+            user1 = user;
+            rols1 = rols;
         }
 
 
@@ -55,12 +59,15 @@ namespace TatarCulturaWpf.Pages
 
         private void ObjeckListClick(object sender, RoutedEventArgs e)
         {
+            if(rols1<3)
             Manager.MainFrame.Navigate(new ObjectListPage());
+            else
+            Manager.MainFrame.Navigate(new ListViewObjectPage());
         }
 
         private void AccountClick(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new PageUser(user1));
         }
 
         private void UserListClick(object sender, RoutedEventArgs e)
@@ -68,9 +75,6 @@ namespace TatarCulturaWpf.Pages
             Manager.MainFrame.Navigate(new UserListPage() );
         }
 
-        private void MapClick(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new PageObject(null));
-        }
+
     }
 }

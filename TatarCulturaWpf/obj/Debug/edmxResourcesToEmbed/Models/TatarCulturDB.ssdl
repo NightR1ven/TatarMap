@@ -8,6 +8,7 @@
     <Property Name="IdUser" Type="int" />
     <Property Name="IdObject" Type="int" />
     <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="Star" Type="int" />
   </EntityType>
   <EntityType Name="Event">
     <Key>
@@ -30,15 +31,6 @@
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Latitude" Type="float" />
     <Property Name="Longitude" Type="float" />
-  </EntityType>
-  <EntityType Name="Star">
-    <Key>
-      <PropertyRef Name="IdStar" />
-    </Key>
-    <Property Name="IdStar" Type="int" Nullable="false" />
-    <Property Name="IdUser" Type="int" />
-    <Property Name="IdObject" Type="int" />
-    <Property Name="Star" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -112,30 +104,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Star_Object">
-    <End Role="Object" Type="Self.Object" Multiplicity="0..1" />
-    <End Role="Star" Type="Self.Star" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Object">
-        <PropertyRef Name="IdObject" />
-      </Principal>
-      <Dependent Role="Star">
-        <PropertyRef Name="IdObject" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Star_User">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Star" Type="Self.Star" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="IdUser" />
-      </Principal>
-      <Dependent Role="Star">
-        <PropertyRef Name="IdUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_User_Event">
     <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -164,7 +132,6 @@
     <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Object" EntityType="Self.Object" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Star" EntityType="Self.Star" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -180,14 +147,6 @@
     <AssociationSet Name="FK_Object_Type" Association="Self.FK_Object_Type">
       <End Role="Type" EntitySet="Type" />
       <End Role="Object" EntitySet="Object" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Star_Object" Association="Self.FK_Star_Object">
-      <End Role="Object" EntitySet="Object" />
-      <End Role="Star" EntitySet="Star" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Star_User" Association="Self.FK_Star_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Star" EntitySet="Star" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Event" Association="Self.FK_User_Event">
       <End Role="Event" EntitySet="Event" />

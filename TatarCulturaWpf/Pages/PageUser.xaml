@@ -10,33 +10,54 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="1"  Text="{Binding Description}"/>
+            
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Content="{Binding Name}" Grid.Row="0" VerticalAlignment="Bottom"/>
-                <Label Content="{Binding Type.Name}" Grid.Row="1" VerticalAlignment="Top"/>
+                <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Label Content="{Binding Login}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{StaticResource LabelObject}" />
+                    <Label Content="{Binding UserRol.NameRols}" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource LabelRed}" FontSize="14"/>
+                </StackPanel>
             </Grid>
-            <Image Width="240" Grid.Row="0" Stretch="Uniform" Source="{Binding Path=GetUserPhoto}"/>
+            <Image Source="/TatarCulturaWpf;component/Resources/background.jpg" Stretch="UniformToFill" Grid.Row="0" Opacity="0.6" Panel.ZIndex="1"/>
+            <TextBlock Grid.Row="0" Background="Black" Panel.ZIndex="0"/>
+            <Ellipse Width="75" Height="75" Panel.ZIndex="2">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding GetUserPhoto}" />
+                </Ellipse.Fill>
+            </Ellipse>
         </Grid>
         <Grid Grid.Row="1">
-
-            <ListView>
-
-            </ListView>
-
-            
+            <ListBox x:Name="ListBoxComment" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch"  SelectedValuePath="IdComment">
+                <ListBox.ItemTemplate >
+                    <DataTemplate>
+                        <StackPanel Margin="5" Orientation="Horizontal">
+                            <Image Width="60" Height="60" Source="{Binding Object.GetObjectPhoto}" Margin="5" Stretch="UniformToFill" />
+                            <StackPanel Orientation="Vertical">
+                                
+                                <Label Content="{Binding Object.Name}" Style="{StaticResource LabelRed}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="☆" Style="{StaticResource LabelRed}" FontSize="18"/>
+                                    <Label Content="{Binding Star}" Style="{StaticResource LabelRed}" FontSize="18"/>
+                                    <Label Content="/5" Style="{StaticResource LabelRed}" FontSize="12"/>
+                                </StackPanel>
+                                <Label Content="{Binding Comment1}" Style="{StaticResource LabelObject}" FontSize="14"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
 
     </Grid>

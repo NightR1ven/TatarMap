@@ -33,7 +33,7 @@
                 <Label Content="{Binding Name}" Grid.Row="0" VerticalAlignment="Bottom" Style="{DynamicResource LabelObject}"/>
                 <Label Content="{Binding Type.Name}" Grid.Row="1" VerticalAlignment="Top" Style="{DynamicResource LabelRed}"/>
             </Grid>
-            <Image  Grid.Row="1" Grid.Column="0" Stretch="Uniform" Source="{Binding Path=GetObjectPhoto}" Margin="10"/>
+            <Image x:Name="UsersPhoto"  Grid.Row="1" Grid.Column="0" Stretch="Uniform" Source="{Binding GetObjectPhoto}" Margin="10"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -65,7 +65,25 @@
                                   VerticalAlignment="Top" 
                                   Margin="5 5"
                                   BorderThickness="1" MouseUp="PackIconMouseUp" Width="30" Height="30" />
-            <TextBlock Grid.Column="0" Foreground="White" x:Name="TextBlockCoords" MouseDown="TextBlockCoordsMouseDown" Margin="10"/>
+            <ListBox x:Name="ListBoxComment" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch"  SelectedValuePath="IdComment">
+                <ListBox.ItemTemplate >
+                    <DataTemplate>
+                         <StackPanel Margin="5" Orientation="Horizontal">
+                            <Image Width="60" Height="60" Source="{Binding User.GetUserPhoto}" Margin="5" Stretch="UniformToFill" />
+                            <StackPanel Orientation="Vertical">
+                                
+                                <Label Content="{Binding User.Login}" Style="{StaticResource LabelRed}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="☆" Style="{StaticResource LabelRed}" FontSize="18"/>
+                                    <Label Content="{Binding Star}" Style="{StaticResource LabelRed}" FontSize="18"/>
+                                    <Label Content="/5" Style="{StaticResource LabelRed}" FontSize="12"/>
+                                </StackPanel>
+                                <Label Content="{Binding Comment1}" Style="{StaticResource LabelObject}" FontSize="14"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
         
     </Grid>

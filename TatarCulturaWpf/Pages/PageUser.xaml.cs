@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TatarCulturaWpf.Models;
 
 namespace TatarCulturaWpf.Pages
 {
@@ -20,9 +21,12 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class PageUser : Page
     {
-        public PageUser()
+        private User _currentUser = new User();
+        public PageUser(User user)
         {
             InitializeComponent();
+            DataContext = user;
+            ListBoxComment.ItemsSource = TatarCulturDbEntities.GetContext().Comments.Where(p=>p.IdUser==user.IdUser).OrderBy(p => p.IdComment).ToList();
         }
     }
 }

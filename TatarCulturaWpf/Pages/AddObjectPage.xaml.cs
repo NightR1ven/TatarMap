@@ -52,17 +52,17 @@ namespace TatarCulturaWpf.Pages
                 s.AppendLine("Тип не выбрана");
             //if (string.IsNullOrWhiteSpace(tbPhotoName.Text))
             //    s.AppendLine("Фото не выбрано пустое");
-            if (_currentObject.Latitude == null) ;
+            if (tbLatitude == null) ;
             s.AppendLine("Поле ширины пустое");
-            if (_currentObject.Longitude == null) ;
+            if (tbLongitude == null) ;
             s.AppendLine("Поле долгота пустое");
-            if (_currentObject.Latitude > 90) ;
+            if (Convert.ToInt16(tbLatitude) > 90) ;
             s.AppendLine("Поле ширины не корректно");
-            if (_currentObject.Latitude < -90) ;
+            if (Convert.ToInt16(tbLatitude) < -90) ;
             s.AppendLine("Поле ширины не корректно");
-            if (_currentObject.Longitude > 180) ;
+            if (Convert.ToInt16(tbLongitude) > 180) ;
             s.AppendLine("Поле долгота не корректно");
-            if (_currentObject.Longitude > -180) ;
+            if (Convert.ToInt16(tbLongitude) > -180) ;
             s.AppendLine("Поле долгота не корректно");
             return s;
         }

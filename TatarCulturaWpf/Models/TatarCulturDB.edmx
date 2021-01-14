@@ -13,6 +13,7 @@
           <Property Name="IdUser" Type="int" />
           <Property Name="IdObject" Type="int" />
           <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Star" Type="int" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -35,15 +36,6 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Latitude" Type="float" />
           <Property Name="Longitude" Type="float" />
-        </EntityType>
-        <EntityType Name="Star">
-          <Key>
-            <PropertyRef Name="IdStar" />
-          </Key>
-          <Property Name="IdStar" Type="int" Nullable="false" />
-          <Property Name="IdUser" Type="int" />
-          <Property Name="IdObject" Type="int" />
-          <Property Name="Star" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -117,30 +109,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Star_Object">
-          <End Role="Object" Type="Self.Object" Multiplicity="0..1" />
-          <End Role="Star" Type="Self.Star" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Object">
-              <PropertyRef Name="IdObject" />
-            </Principal>
-            <Dependent Role="Star">
-              <PropertyRef Name="IdObject" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Star_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Star" Type="Self.Star" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="Star">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Event">
           <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -169,7 +137,6 @@
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Object" EntityType="Self.Object" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Star" EntityType="Self.Star" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -185,14 +152,6 @@
           <AssociationSet Name="FK_Object_Type" Association="Self.FK_Object_Type">
             <End Role="Type" EntitySet="Type" />
             <End Role="Object" EntitySet="Object" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Star_Object" Association="Self.FK_Star_Object">
-            <End Role="Object" EntitySet="Object" />
-            <End Role="Star" EntitySet="Star" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Star_User" Association="Self.FK_Star_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Star" EntitySet="Star" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Event" Association="Self.FK_User_Event">
             <End Role="Event" EntitySet="Event" />
@@ -217,6 +176,7 @@
           <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Self.FK_Comment_User" FromRole="Comment" ToRole="User" />
           <NavigationProperty Name="Object" Relationship="TatarCulturDbModel.FK_Comment_Object" FromRole="Comment" ToRole="Object" />
+          <Property Name="Star" Type="Int32" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -228,17 +188,6 @@
           <Property Name="DateStarEvent" Type="DateTime" Precision="0" />
           <Property Name="DateEndEvent" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_Event" FromRole="Event" ToRole="User" />
-        </EntityType>
-        <EntityType Name="Star">
-          <Key>
-            <PropertyRef Name="IdStar" />
-          </Key>
-          <Property Name="IdStar" Type="Int32" Nullable="false" />
-          <Property Name="IdUser" Type="Int32" />
-          <Property Name="IdObject" Type="Int32" />
-          <Property Name="Star1" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Star_User" FromRole="Star" ToRole="User" />
-          <NavigationProperty Name="Object" Relationship="TatarCulturDbModel.FK_Star_Object" FromRole="Star" ToRole="Object" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
@@ -260,7 +209,6 @@
           <Property Name="IdRols" Type="Int32" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Event" Relationship="Self.FK_User_Event" FromRole="User" ToRole="Event" />
-          <NavigationProperty Name="Stars" Relationship="Self.FK_Star_User" FromRole="User" ToRole="Star" />
           <NavigationProperty Name="UserRol" Relationship="Self.FK_User_UserRols" FromRole="User" ToRole="UserRols" />
           <Property Name="UserPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -296,18 +244,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Star_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Star" Type="Self.Star" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="Star">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_UserRols">
           <End Role="UserRols" Type="Self.UserRol" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -323,7 +259,6 @@
         <EntityContainer Name="TatarCulturDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="Events" EntityType="Self.Event" />
-          <EntitySet Name="Stars" EntityType="Self.Star" />
           <EntitySet Name="Types" EntityType="Self.Type" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserRols" EntityType="Self.UserRol" />
@@ -334,10 +269,6 @@
           <AssociationSet Name="FK_User_Event" Association="Self.FK_User_Event">
             <End Role="Event" EntitySet="Events" />
             <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Star_User" Association="Self.FK_Star_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Star" EntitySet="Stars" />
           </AssociationSet>
           <AssociationSet Name="FK_User_UserRols" Association="Self.FK_User_UserRols">
             <End Role="UserRols" EntitySet="UserRols" />
@@ -353,10 +284,6 @@
             <End Role="Type" EntitySet="Types" />
             <End Role="Object" EntitySet="Objects" />
           </AssociationSet>
-          <AssociationSet Name="FK_Star_Object" Association="TatarCulturDbModel.FK_Star_Object">
-            <End Role="Object" EntitySet="Objects" />
-            <End Role="Star" EntitySet="Stars" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Object">
           <Key>
@@ -371,7 +298,6 @@
           <Property Name="Longitude" Type="Double" />
           <NavigationProperty Name="Comments" Relationship="TatarCulturDbModel.FK_Comment_Object" FromRole="Object" ToRole="Comment" />
           <NavigationProperty Name="Type" Relationship="TatarCulturDbModel.FK_Object_Type" FromRole="Object" ToRole="Type" />
-          <NavigationProperty Name="Stars" Relationship="TatarCulturDbModel.FK_Star_Object" FromRole="Object" ToRole="Star" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -407,18 +333,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Star_Object">
-          <End Type="TatarCulturDbModel.Object" Role="Object" Multiplicity="0..1" />
-          <End Type="TatarCulturDbModel.Star" Role="Star" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Object">
-              <PropertyRef Name="IdObject" />
-            </Principal>
-            <Dependent Role="Star">
-              <PropertyRef Name="IdObject" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -428,6 +342,7 @@
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="TatarCulturDbModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="Star" ColumnName="Star" />
                 <ScalarProperty Name="IdComment" ColumnName="IdComment" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdObject" ColumnName="IdObject" />
@@ -443,16 +358,6 @@
                 <ScalarProperty Name="Coin" ColumnName="Coin" />
                 <ScalarProperty Name="DateStarEvent" ColumnName="DateStarEvent" />
                 <ScalarProperty Name="DateEndEvent" ColumnName="DateEndEvent" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stars">
-            <EntityTypeMapping TypeName="TatarCulturDbModel.Star">
-              <MappingFragment StoreEntitySet="Star">
-                <ScalarProperty Name="IdStar" ColumnName="IdStar" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="IdObject" ColumnName="IdObject" />
-                <ScalarProperty Name="Star1" ColumnName="Star" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

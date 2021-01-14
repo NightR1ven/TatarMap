@@ -27,7 +27,6 @@ namespace TatarCulturaWpf
             InitializeComponent();
 
             UserListDG.ItemsSource = TatarCulturDbEntities.GetContext().Users.ToList();
-            //UserListDG..ItemsSource = TatarCulturDbEntities.GetContext().UserRols.ToList();
         }
 
         private void BtnSaveClick(object sender, RoutedEventArgs e)

@@ -11,14 +11,14 @@ namespace TatarCulturaWpf.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             this.Comments = new HashSet<Comment>();
-            this.Stars = new HashSet<Star>();
         }
     
         public int IdUser { get; set; }
@@ -28,12 +28,21 @@ namespace TatarCulturaWpf.Models
         public Nullable<int> Coin { get; set; }
         public Nullable<int> IdRols { get; set; }
         public string UserPhoto { get; set; }
-    
+
+        public string GetUserPhoto
+        {
+            get
+            {
+                if (UserPhoto is null)
+                    return null;
+                return Directory.GetCurrentDirectory() + @"\ImagesUsers\" + UserPhoto.Trim();
+            }
+        }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Event Event { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Star> Stars { get; set; }
         public virtual UserRol UserRol { get; set; }
     }
 }

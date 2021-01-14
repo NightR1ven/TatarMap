@@ -27,6 +27,7 @@ namespace TatarCulturaWpf
             InitializeComponent();
             TbLogin.Text = "admin";
             PbPassword.Password = "admin";
+            
         }
 
 
@@ -53,7 +54,7 @@ namespace TatarCulturaWpf
                 int rols = (int)user.IdRols;
 
                 
-                MainWindow mainWindow = new MainWindow(rols);
+                MainWindow mainWindow = new MainWindow(rols,user);
                 mainWindow.Owner = this;
                 this.Hide();
                 mainWindow.Show();

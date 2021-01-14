@@ -32,7 +32,7 @@ namespace TatarCulturaWpf.Pages
                 _currentObject = tatObject;
             }
             this.DataContext = _currentObject;
-            MessageBox.Show($"{_currentObject.Geo}");
+            ListBoxComment.ItemsSource = TatarCulturDbEntities.GetContext().Comments.Where(p=>p.IdObject==tatObject.IdObject).OrderBy(p => p.IdComment).ToList();
         }
 
         private void MapZelMouseUp(object sender, MouseButtonEventArgs e)
@@ -63,7 +63,7 @@ namespace TatarCulturaWpf.Pages
             //pin.Location = pinLocation;
 
 
-            TextBlockCoords.Text = $"{pinLocation.Latitude}: {pinLocation.Longitude}";
+            //TextBlockCoords.Text = $"{pinLocation.Latitude}: {pinLocation.Longitude}";
             //MainMap.Children.Add(pin);
         }
 

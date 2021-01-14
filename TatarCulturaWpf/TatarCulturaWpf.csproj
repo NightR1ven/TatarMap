@@ -141,7 +141,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EditorPage.xaml">
+    <Page Include="Pages\PageComment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,9 +185,6 @@
     <Compile Include="Models\Event.cs">
       <DependentUpon>TatarCulturDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Star.cs">
-      <DependentUpon>TatarCulturDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TatarCulturDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -212,8 +209,8 @@
     <Compile Include="Models\UserRol.cs">
       <DependentUpon>TatarCulturDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditorPage.xaml.cs">
-      <DependentUpon>EditorPage.xaml</DependentUpon>
+    <Compile Include="Pages\PageComment.xaml.cs">
+      <DependentUpon>PageComment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UIStartMenuPage.xaml.cs">
       <DependentUpon>UIStartMenuPage.xaml</DependentUpon>
@@ -266,6 +263,8 @@
       <DependentUpon>TatarCulturDB.edmx</DependentUpon>
       <LastGenOutput>TatarCulturDB.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\T.png" />
+    <Resource Include="Resources\background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

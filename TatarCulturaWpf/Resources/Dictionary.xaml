@@ -45,6 +45,13 @@
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
+    <Style x:Key="LabelWhite" TargetType="Label">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
     <Style x:Key="LabelObject" TargetType="Label">
         <Setter Property="FontSize" Value="30"/>
         <Setter Property="FontFamily" Value="Arial"/>
@@ -68,6 +75,7 @@
 
     <Style x:Key="base_win" TargetType="Window">
     </Style>
+
 
 
 

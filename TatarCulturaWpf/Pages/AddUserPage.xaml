@@ -36,6 +36,7 @@
             <Label Grid.Row="2" Grid.Column="0" Content="Пароль:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
             <Label Grid.Row="3" Grid.Column="0" Content="Пароль повторно:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
             <Label Grid.Row="4" Grid.Column="0" Content="Роль:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
+            <Label Grid.Row="6" Grid.Column="0" Content="Картинка:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"/>
 
 
             <TextBox x:Name="tbLogin" Text="{Binding Login}"  Grid.Row="1" Grid.Column="1" FontSize="18" Padding="0,2"/>
@@ -43,6 +44,10 @@
                      FontSize="18" DisplayMemberPath="NameRols" SelectedValuePath="IdRols"/>
             <TextBox x:Name="tbPassword" Text="{Binding Password}"  Grid.Row="2" Grid.Column="1" FontSize="18" Padding="0,2"/>
             <TextBox x:Name="tbPassword1" Grid.Row="3" Grid.Column="1" FontSize="18" Padding="0,2"/>
+            <Image x:Name="imgPhoto" Source="{Binding Path = GetUserPhoto}" Grid.Row="6" Grid.Column="1"  Height="Auto" Margin="0,40" HorizontalAlignment="Left" Width="auto" />
+            <Button x:Name="btnLoad" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="40" Click="BtnLoadClick">
+                LOAD
+            </Button>
         </Grid>
 
         <StackPanel  Grid.Row="5" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

@@ -19,7 +19,6 @@ namespace TatarCulturaWpf.Models
         public Object()
         {
             this.Comments = new HashSet<Comment>();
-            this.Stars = new HashSet<Star>();
         }
     
         public int IdObject { get; set; }
@@ -46,14 +45,12 @@ namespace TatarCulturaWpf.Models
             {
                 if (Latitude == 0)
                     return null;
-                return $"{Latitude.ToString().Replace(",",".")} , {Longitude.ToString().Replace(",", ".")}";
+                return $"{Latitude.ToString().Replace(",", ".")} , {Longitude.ToString().Replace(",", ".")}";
             }
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Type Type { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Star> Stars { get; set; }
     }
 }
