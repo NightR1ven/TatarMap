@@ -10,5 +10,7 @@ namespace TatarCulturaWpf
     class Manager
     {
         public static Frame MainFrame { get; set; }
+        public static int idUser;
+        public static int idObject;
     }
 }

@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="Account" Visibility="Visible" Style="{DynamicResource ButtonUIPage}" Height="100"
-                Width="180" Margin="2.5" Click="AccountClick">
+                Width="180" Margin="2.5" Click="AccountClick" TabIndex="1">
                 <StackPanel>
                     <Label Content="Профиль"/>
                 </StackPanel>
@@ -19,7 +19,7 @@
 
 
             <Button x:Name="UserList" Visibility="Visible" Style="{DynamicResource ButtonUIPage}"  Width="180" 
-                Height="100" Margin="2.5" Click="UserListClick">
+                Height="100" Margin="2.5" Click="UserListClick" TabIndex="2">
                 <StackPanel>
                     <Label Content="Пользватели"/>
                 </StackPanel>
@@ -27,22 +27,12 @@
 
 
             <Button x:Name="Object" Grid.Column="2" Grid.Row="1" Visibility="Visible" Style="{DynamicResource ButtonUIPage}" Height="100"
-                Width="180" Margin="2.5" Click="ObjeckListClick">
+                Width="180" Margin="2.5" Click="ObjeckListClick" TabIndex="3">
                         <StackPanel>
                             <Label Content="Достопримечательности" Width="auto" FontSize="14"/>
                         </StackPanel>
                     </Button>
-                
-                    <Button x:Name="Editor" Grid.Column="3"  Grid.Row="1" Visibility="Visible" Style="{DynamicResource ButtonUIPage}" Width="180"
-                Height="100" Margin="2.5" Click="EditorObjectClick">
-                        <StackPanel>
-                            <Label Content="Редактирования" HorizontalContentAlignment="Center" Width="auto" FontSize="14"/>
-                            <Label Content="информации о" Width="auto" HorizontalContentAlignment="Center" FontSize="14"/>
-                            <Label Content="доспримечательностей" Width="auto" FontSize="14"/>
-                        </StackPanel>
-                    </Button>
 
-           
         </StackPanel>
         
 

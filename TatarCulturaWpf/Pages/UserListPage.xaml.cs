@@ -36,7 +36,24 @@ namespace TatarCulturaWpf
 
         private void BtnDeleteClick(object sender, RoutedEventArgs e)
         {
+            var selectedUser = UserListDG.SelectedItems.Cast<User>().ToList();
+            MessageBoxResult messageBoxResult = MessageBox.Show($"Удалить {selectedUser.Count()} записей???", "Удаление", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
+            if (messageBoxResult == MessageBoxResult.OK)
+            {
+                try
+                {
+                    TatarCulturDbEntities.GetContext().Users.RemoveRange(selectedUser);
+                    TatarCulturDbEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Записи удалены");
+                    List<User> services = TatarCulturDbEntities.GetContext().Users.OrderBy(p => p.IdRols).ToList();
+                    UserListDG.ItemsSource = services;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
 
         private void EditorClick(object sender, RoutedEventArgs e)

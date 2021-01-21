@@ -23,8 +23,6 @@ C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCult
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.csproj.CopyComplete
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.exe
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.pdb
-C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EditorPage.g.cs
-C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EditorPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\UIStartMenuPage.g.cs
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\UIStartMenuPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\UserListPage.g.cs
@@ -53,4 +51,6 @@ C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\bin\Debug\Microsoft
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\PageObject.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\PageUser.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddCommentsPage.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddCommentsPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.csprojAssemblyReference.cache

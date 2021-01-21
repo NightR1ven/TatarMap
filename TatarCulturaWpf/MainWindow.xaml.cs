@@ -91,12 +91,15 @@ namespace TatarCulturaWpf
             Manager.MainFrame.Navigate(new UserListPage());
             BtnMenuClose.Visibility = Visibility.Collapsed;
             BtnMenuOpen.Visibility = Visibility.Visible;
+            TextBlockMain.Visibility = Visibility.Hidden;
         }
 
         private void BtnObjectClick(object sender, RoutedEventArgs e)
         {
-            TextBlockMain.Visibility = Visibility.Hidden;
             MainFrame.Navigate(new ListViewObjectPage());
+            BtnMenuClose.Visibility = Visibility.Collapsed;
+            BtnMenuOpen.Visibility = Visibility.Visible;
+            TextBlockMain.Visibility = Visibility.Hidden;
         }
 
         private void BtnExitClick(object sender, RoutedEventArgs e)
@@ -133,12 +136,16 @@ namespace TatarCulturaWpf
         private void BtnListObjectClick(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new ObjectListPage());
+            BtnMenuClose.Visibility = Visibility.Collapsed;
+            BtnMenuOpen.Visibility = Visibility.Visible;
             TextBlockMain.Visibility = Visibility.Hidden;
         }
 
         private void BtnProfileClick(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new PageUser(user1));
+            BtnMenuClose.Visibility = Visibility.Collapsed;
+            BtnMenuOpen.Visibility = Visibility.Visible;
             TextBlockMain.Visibility = Visibility.Hidden;
         }
 
@@ -159,6 +166,9 @@ namespace TatarCulturaWpf
         {
 
             Manager.MainFrame.Navigate(new UIStartMenuPage(rols1,user1));
+            BtnMenuClose.Visibility = Visibility.Collapsed;
+            BtnMenuOpen.Visibility = Visibility.Visible;
+            TextBlockMain.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -13,6 +13,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -36,16 +37,20 @@
             <Image x:Name="UsersPhoto"  Grid.Row="1" Grid.Column="0" Stretch="Uniform" Source="{Binding GetObjectPhoto}" Margin="10"/>
         </Grid>
         <Grid Grid.Row="1">
+            <Label x:Name="labelAttention" Content="Авторизируйтесь чтобы оставлять комментарии" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" Margin="15 0 0 0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BtnComment" Content="Прокомментировать" Margin="2"  Width="150" Height="25" Click="BtnCommentClick" Style="{DynamicResource ButtonUIRed}" TabIndex="1"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ListView>
-              
-            </ListView>
             
-            <m:Map x:Name="MapZel"
+
+           <m:Map x:Name="MapZel"
                CredentialsProvider="O8iF4ZBQsqcCMGkVHsdS~BCu3QRa0mmx1KDQPhtW8ng~AriBZUg-qGw6lWuI5238S5HctVTAi1xC1yO2iO0djFxh5ryRm6YSm-OA8-G3A5nc"
                Grid.Column="1"
                ZoomLevel="15" 

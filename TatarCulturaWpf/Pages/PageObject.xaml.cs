@@ -22,7 +22,10 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class PageObject : Page
     {
+        Models.Object object1;
+
         private Models.Object _currentObject = new Models.Object();
+        private Comment _comment = new Comment();
 
         public PageObject(Models.Object tatObject)
         {
@@ -30,9 +33,27 @@ namespace TatarCulturaWpf.Pages
             if (tatObject != null)
             {
                 _currentObject = tatObject;
+                object1 = tatObject;
             }
+
             this.DataContext = _currentObject;
             ListBoxComment.ItemsSource = TatarCulturDbEntities.GetContext().Comments.Where(p=>p.IdObject==tatObject.IdObject).OrderBy(p => p.IdComment).ToList();
+            List<Comment> comments = TatarCulturDbEntities.GetContext().Comments.ToList();
+
+            Manager.idObject = _currentObject.IdObject;
+
+
+            if(Manager.idUser == 0)
+            {
+                BtnComment.IsEnabled = false;
+                labelAttention.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnComment.IsEnabled = true;
+                labelAttention.Visibility = Visibility.Collapsed;
+            }
+
         }
 
         private void MapZelMouseUp(object sender, MouseButtonEventArgs e)
@@ -41,10 +62,7 @@ namespace TatarCulturaWpf.Pages
 
             Point mousePosition = e.GetPosition(this);
             Location pinLocation = MapZel.ViewportPointToLocation(mousePosition);
-            //Pushpin pin = new Pushpin();
-            //pin.Location = pinLocation;
             MapZel.Center = pinLocation;
-            //MapZel.Children.Add(pin);
         }
 
         private void MapZelMouseLeave(object sender, MouseEventArgs e)
@@ -59,12 +77,6 @@ namespace TatarCulturaWpf.Pages
             Point mousePosition = e.GetPosition(this);
             Location pinLocation = MapZel.ViewportPointToLocation(mousePosition);
 
-            // Pushpin pin = new Pushpin();
-            //pin.Location = pinLocation;
-
-
-            //TextBlockCoords.Text = $"{pinLocation.Latitude}: {pinLocation.Longitude}";
-            //MainMap.Children.Add(pin);
         }
 
         private void PackIconMouseUp(object sender, MouseButtonEventArgs e)
@@ -84,6 +96,11 @@ namespace TatarCulturaWpf.Pages
             {
                 TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
             }
+        }
+
+        private void BtnCommentClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddCommentsPage());
         }
     }
 }

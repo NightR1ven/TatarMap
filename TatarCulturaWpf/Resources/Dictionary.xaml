@@ -74,6 +74,14 @@
     </Style>
 
     <Style x:Key="base_win" TargetType="Window">
+        <Setter Property="WindowState" Value="Maximized"/>
+    </Style>
+
+    <Style x:Key="ComboEstimation" TargetType="ComboBox">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="{DynamicResource RedDark}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
 

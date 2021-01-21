@@ -21,6 +21,7 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class ListViewObjectPage : Page
     {
+        User user1;
         int _itemcount = 0;
         public ListViewObjectPage()
         {
@@ -36,6 +37,7 @@ namespace TatarCulturaWpf.Pages
             LViewObject.ItemsSource = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
             _itemcount = LViewObject.Items.Count;
             TextBlockCount.Text = $"Результат запроса: {_itemcount} записей из {_itemcount}";
+
         }
 
         private void TBoxSearchTextChanged(object sender, TextChangedEventArgs e)

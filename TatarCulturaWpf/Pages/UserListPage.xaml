@@ -13,7 +13,7 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="UserListDG" AutoGenerateColumns="False" >
+        <DataGrid x:Name="UserListDG" AutoGenerateColumns="False" TabIndex="1" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="auto" Header="Editor">
                     <DataGridTemplateColumn.CellTemplate>
@@ -31,8 +31,8 @@
         </DataGrid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnSave" Content="Сохранить" Click="BtnSaveClick"  Margin="5"/>
-            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5"/>
+            <Button x:Name="btnSave" Content="Сохранить" Click="BtnSaveClick"  Margin="5" Style="{StaticResource ButtonUIRed}" TabIndex="2"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5" Style="{StaticResource ButtonUIRed}" TabIndex="3"/>
         </StackPanel>
     </Grid>
 </Page>

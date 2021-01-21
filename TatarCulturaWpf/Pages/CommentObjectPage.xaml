@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Content="{Binding Object.Name}" HorizontalAlignment="Left"/>
-        <DataGrid Grid.Row="1" x:Name="ObjectListDG" AutoGenerateColumns="False" >
+        <DataGrid Grid.Row="1" x:Name="CommentListDG" AutoGenerateColumns="False" TabIndex="1" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding IdUser}" Header="Id User" Width="*"/>
                 <DataGridTextColumn Binding="{Binding User.Login}" Header="User" Width="2*"/>
@@ -24,8 +24,8 @@
         </DataGrid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnSave" Content="Сохранить" Click="btnSaveClick"  Margin="5" Style="{DynamicResource ButtonUIRed}"/>
-            <Button x:Name="btnDelete" Content="Удалить" Click="btnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIRed}"/>
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSaveClick"  Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="2"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="btnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="3"/>
         </StackPanel>
     </Grid>
 </Page>

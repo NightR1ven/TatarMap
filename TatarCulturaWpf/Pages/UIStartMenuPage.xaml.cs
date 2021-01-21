@@ -41,7 +41,6 @@ namespace TatarCulturaWpf.Pages
                     break;
                 case 3:
                     {
-                        Editor.Visibility = Visibility.Collapsed;
                         UserList.Visibility = Visibility.Collapsed;
                     }
                     break;

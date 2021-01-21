@@ -82,6 +82,9 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>TatarCulturDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddCommentsPage.xaml.cs">
+      <DependentUpon>AddCommentsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddObjectPage.xaml.cs">
       <DependentUpon>AddObjectPage.xaml</DependentUpon>
     </Compile>
@@ -106,7 +109,7 @@
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager.cs" />
+    <Compile Include="Models\Manager.cs" />
     <Compile Include="Pages\UserListPage.xaml.cs">
       <DependentUpon>UserListPage.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddCommentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddObjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,10 +145,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\CommentObjectPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PageComment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,9 +211,6 @@
     </Compile>
     <Compile Include="Models\UserRol.cs">
       <DependentUpon>TatarCulturDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PageComment.xaml.cs">
-      <DependentUpon>PageComment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UIStartMenuPage.xaml.cs">
       <DependentUpon>UIStartMenuPage.xaml</DependentUpon>

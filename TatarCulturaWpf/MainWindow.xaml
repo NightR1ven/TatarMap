@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TatarCulturaWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Closed="WindowClosed"
-        Closing="WindowClosing" IsVisibleChanged="WindowIsVisibleChanged" Style="{StaticResource base_win}">
+        Closing="WindowClosing" IsVisibleChanged="WindowIsVisibleChanged" Style="{StaticResource base_win}" MinWidth="1024" MinHeight="768">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMain">
@@ -42,10 +42,19 @@
             <BeginStoryboard x:Name="OpenMenu_BeginStoryboard" Storyboard="{StaticResource OpenMenu}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="BtnListObject">
-            <BeginStoryboard x:Name="OpenMenu_BeginStoryboard1" Storyboard="{StaticResource OpenMenu}"/>
+            <BeginStoryboard x:Name="OpenMenu_BeginStoryboard1" Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="BtnListUsers">
             <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="BtnProfile">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard2" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="BtnMenu">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard3" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="BtnObject">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard4" Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="{DynamicResource RedDark}">
@@ -67,7 +76,7 @@
                 <Label Content="{Binding Login}" Style="{StaticResource LabelWhite}" HorizontalAlignment="Center"/>
             </StackPanel>
 
-            <Button x:Name="BtnActive" Height="60" Click="BtnActiveClick" Style="{DynamicResource ButtonUI}">
+            <Button x:Name="BtnActive" Height="60" Click="BtnActiveClick" Style="{DynamicResource ButtonUI}" TabIndex="2">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
 
                     <TextBlock Text="Авторизоваться" Margin="10" VerticalAlignment="Center"/>
@@ -75,7 +84,7 @@
             </Button>
 
 
-            <Button x:Name="BtnProfile" Height="60" Click="BtnProfileClick" Style="{DynamicResource ButtonUI}">
+            <Button x:Name="BtnProfile" Height="60" Click="BtnProfileClick" Style="{DynamicResource ButtonUI}" TabIndex="3">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
 
                     <TextBlock Text="Профиль" Margin="10" VerticalAlignment="Center"/>
@@ -83,30 +92,30 @@
 
             </Button>
 
-            <Button x:Name="BtnMenu" Height="60" Click="BtnMenuClick" Style="{DynamicResource ButtonUI}">
+            <Button x:Name="BtnMenu" Height="60" Click="BtnMenuClick" Style="{DynamicResource ButtonUI}" TabIndex="4">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
 
                     <TextBlock Text="Главное" Margin="10" VerticalAlignment="Center" />
                 </StackPanel>
 
             </Button>
-            
-            <Button x:Name="BtnObject" Height="60" Click="BtnObjectClick" Style="{DynamicResource ButtonUI}">
+
+            <Button x:Name="BtnObject" Height="60" Click="BtnObjectClick" Style="{DynamicResource ButtonUI}" TabIndex="5">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
 
                     <TextBlock Text="Достромечательности" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
 
             </Button>
-            
-            <Button x:Name="BtnListUsers" Height="60" Click="BtnListUsersClick" Style="{DynamicResource ButtonUI}">
+
+            <Button x:Name="BtnListUsers" Height="60" Click="BtnListUsersClick" Style="{DynamicResource ButtonUI}" TabIndex="6">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
 
                     <TextBlock Text="Список пользователей" Margin="10" VerticalAlignment="Center"/>
                 </StackPanel>
 
             </Button>
-            <Button x:Name="BtnListObject" Height="60"  Click="BtnListObjectClick" Style="{DynamicResource ButtonUI}">
+            <Button x:Name="BtnListObject" Height="60"  Click="BtnListObjectClick" Style="{DynamicResource ButtonUI}" TabIndex="7">
                 <StackPanel Orientation="Horizontal" Margin="10 0">
 
                     <TextBlock Text="Список Достромечательностей" Margin="10" VerticalAlignment="Center"/>
@@ -128,12 +137,12 @@
                 <RowDefinition Height="387*"/>
                 <RowDefinition Height="239*"/>
             </Grid.RowDefinitions>
-            
+
             <Image Source="Resources/T.png" HorizontalAlignment="Right" VerticalAlignment="Top" Width="180" Height="190" Stretch="Fill" Grid.Row="0" Panel.ZIndex="0"/>
-            <Button x:Name="BtnMenuOpen" Grid.Row="0" Content="Меню" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenuOpenClick" Margin="0,2,0,2"  Style="{DynamicResource ButtonUIRed}"/>
+            <Button x:Name="BtnMenuOpen" Grid.Row="0" Content="Меню" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenuOpenClick" Margin="0,2,0,2"  Style="{DynamicResource ButtonUIRed}" TabIndex="1"/>
             <Button x:Name="BtnMenuClose" Grid.Row="0" Content="Меню" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenuCloseClick" 
-             Visibility="Hidden" Margin="0,2,0,2"  Style="{DynamicResource ButtonUIRed}"/>
-            <Button x:Name="BtnExit" Grid.Row="0" Content="Выйти" HorizontalAlignment="Right" VerticalAlignment="Center" Panel.ZIndex="1" Click="BtnExitClick" Margin="0,2,10,2"  Style="{DynamicResource ButtonUIRed}"/>
+             Visibility="Hidden" Margin="0,2,0,2"  Style="{DynamicResource ButtonUIRed}" TabIndex="8"/>
+            <Button x:Name="BtnExit" Grid.Row="0" Content="Выйти" HorizontalAlignment="Right" VerticalAlignment="Center" Panel.ZIndex="1" Click="BtnExitClick" Margin="0,2,10,2"  Style="{DynamicResource ButtonUIRed}" TabIndex="9"/>
             <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.RowSpan="2" BorderBrush="{StaticResource RedDark}" BorderThickness="2"/>
 
             <TextBlock x:Name="TextBlockMain" Grid.Row="1" Background="Gray" Opacity="0.3" Visibility="Collapsed" Grid.RowSpan="2"/>

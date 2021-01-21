@@ -52,7 +52,7 @@ namespace TatarCulturaWpf
             if (user != null)
             {   
                 int rols = (int)user.IdRols;
-
+                Manager.idUser = user.IdUser;
                 
                 MainWindow mainWindow = new MainWindow(rols,user);
                 mainWindow.Owner = this;

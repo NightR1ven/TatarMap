@@ -34,7 +34,7 @@ namespace TatarCulturaWpf.Pages
 
         void LoadData(Models.Object tatObject)
         {
-            ObjectListDG.ItemsSource = TatarCulturDbEntities.GetContext().Comments.Where(p => p.IdObject == tatObject.IdObject).OrderBy(p=>p.User.Login).ToList();
+            CommentListDG.ItemsSource = TatarCulturDbEntities.GetContext().Comments.Where(p => p.IdObject == tatObject.IdObject).OrderBy(p=>p.User.Login).ToList();
         }
 
         private void btnSaveClick(object sender, RoutedEventArgs e)
@@ -44,7 +44,24 @@ namespace TatarCulturaWpf.Pages
 
         private void btnDeleteClick(object sender, RoutedEventArgs e)
         {
+            var selectedObject = CommentListDG.SelectedItems.Cast<Models.Comment>().ToList();
+            MessageBoxResult messageBoxResult = MessageBox.Show($"Удалить {selectedObject.Count()} записей???", "Удаление", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
+            if (messageBoxResult == MessageBoxResult.OK)
+            {
+                try
+                {
+                    TatarCulturDbEntities.GetContext().Comments.RemoveRange(selectedObject);
+                    TatarCulturDbEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Записи удалены");
+                    List<Models.Comment> services = TatarCulturDbEntities.GetContext().Comments.OrderBy(p => p.IdComment).ToList();
+                    CommentListDG.ItemsSource = services;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
 
         private void PageIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

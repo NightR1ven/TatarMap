@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TatarCulturaWpf"
         mc:Ignorable="d"
         Title="LoginWindow" Height="280" Width="440" WindowStartupLocation="CenterScreen"
-        IsVisibleChanged="WindowIsVisibalChanged">
+        IsVisibleChanged="WindowIsVisibalChanged" MinWidth="440" MinHeight="280">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -16,7 +16,7 @@
 
 
         <Button x:Name="BtnRegistration" Click="BtnRegistrationClick" Content="Регистрация" Grid.Row="0" HorizontalAlignment="Right"  Width="100" Height="20" 
-               Style="{DynamicResource ButtonUIRed}" FontSize="12" Margin="5"/>
+               Style="{DynamicResource ButtonUIRed}" FontSize="12" Margin="5" TabIndex="6"/>
 
         <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Grid.RowDefinitions>
@@ -42,15 +42,15 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
         <Label  Content="Запомнить меня" Grid.Row='2' FontSize="10" VerticalAlignment="Center" />
-            <CheckBox x:Name="CheckerBox" VerticalAlignment="Center"/>
+            <CheckBox x:Name="CheckerBox" VerticalAlignment="Center" TabIndex="3"/>
         </StackPanel>
         
         
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="5">
-            <Button x:Name="BtnEnter" Click="BtnEnterClick" Content="Enter" Style="{DynamicResource ButtonUIRed}" Margin="2" TabIndex="3">
+            <Button x:Name="BtnEnter" Click="BtnEnterClick" Content="Enter" Style="{DynamicResource ButtonUIRed}" Margin="2" TabIndex="4">
                 
             </Button>
-            <Button x:Name="BtnCancel" Click="BtnCancelClick" Content="Cancel" Style="{DynamicResource ButtonUIRed}" Margin="2"/>
+            <Button x:Name="BtnCancel" Click="BtnCancelClick" Content="Cancel" Style="{DynamicResource ButtonUIRed}" Margin="2" TabIndex="5"/>
             
         </StackPanel>
         
