@@ -36,6 +36,7 @@ namespace TatarCulturaWpf.Pages
             {
                 _currentUser = selecetUser;
             _filePath = _currentDirectory + _currentUser.UserPhoto;
+                Title = "Редактирование данных пользователя";
             }
             _photoName = _currentUser.UserPhoto;
             DataContext = _currentUser;

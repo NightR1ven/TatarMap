@@ -35,6 +35,7 @@ namespace TatarCulturaWpf.Pages
             {
                 _currentObject = tatObject;
                 _filePath = _currentDirectory + _currentObject.ObjectPhoto;
+                Title = "Редактироване информации об объекте";
             }
             DataContext = _currentObject;
             _photoName = _currentObject.ObjectPhoto;

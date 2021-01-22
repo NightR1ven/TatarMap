@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TatarCulturaWpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ListViewObjectPage" IsVisibleChanged="PageIsVisibleChanged">
+      Title="Список мест" IsVisibleChanged="PageIsVisibleChanged">
 
     <Grid>
         <Grid.RowDefinitions>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TatarCulturaWpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" IsVisibleChanged="PageIsVisibleChanged"
-      Title="UserListPage">
+      Title="Список пользователей">
 
     <Grid>
         <Grid.RowDefinitions>

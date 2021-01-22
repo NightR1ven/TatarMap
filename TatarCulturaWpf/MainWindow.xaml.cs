@@ -34,6 +34,8 @@ namespace TatarCulturaWpf
             user1 = user;
             BtnActive.Visibility = Visibility.Collapsed;
             DataContext = user;
+
+
         }
 
         public MainWindow()
@@ -47,7 +49,7 @@ namespace TatarCulturaWpf
             BtnListObject.Visibility = Visibility.Collapsed;
             BtnListUsers.Visibility = Visibility.Collapsed;
             BtnMenu.Visibility = Visibility.Collapsed;
-           
+
         }
 
         private void WindowClosed(object sender, EventArgs e)
