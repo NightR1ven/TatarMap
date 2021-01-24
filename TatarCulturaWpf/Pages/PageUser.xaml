@@ -30,6 +30,8 @@
                     <Label Content="{Binding UserRol.NameRols}" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource LabelRed}" FontSize="14"/>
                 </StackPanel>
             </Grid>
+            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" 
+                     HorizontalAlignment="Right" Panel.ZIndex="3" Style="{DynamicResource ButtonUIRed}" TabIndex="1"/>
             <Image Source="/TatarCulturaWpf;component/Resources/background.jpg" Stretch="UniformToFill" Grid.Row="0" Opacity="0.6" Panel.ZIndex="1"/>
             <TextBlock Grid.Row="0" Background="Black" Panel.ZIndex="0"/>
             <Ellipse Width="75" Height="75" Panel.ZIndex="2">

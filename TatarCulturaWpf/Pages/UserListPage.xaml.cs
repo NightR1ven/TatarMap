@@ -22,17 +22,23 @@ namespace TatarCulturaWpf
     /// </summary>
     public partial class UserListPage : Page
     {
+        int _itemcount = 0;
         public UserListPage()
         {
             InitializeComponent();
 
+            var type = TatarCulturDbEntities.GetContext().UserRols.OrderBy(p => p.NameRols).ToList();
+            type.Insert(0, new Models.UserRol
+            {
+                NameRols = "Все типы"
+            });
+            ComboType.ItemsSource = type;
+            ComboType.SelectedIndex = 0;
             UserListDG.ItemsSource = TatarCulturDbEntities.GetContext().Users.ToList();
+            _itemcount = UserListDG.Items.Count;
+            TextBlockCount.Text = $"Результат запроса: {_itemcount-1} записей из {_itemcount-1}";
         }
 
-        private void BtnSaveClick(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void BtnDeleteClick(object sender, RoutedEventArgs e)
         {
@@ -56,6 +62,28 @@ namespace TatarCulturaWpf
             }
         }
 
+        private void UpdateData()
+        {
+            var _currentUser = TatarCulturDbEntities.GetContext().Users.OrderBy(p => p.IdRols).ToList();
+            if (ComboType.SelectedIndex > 0)
+                _currentUser = _currentUser.Where(p => p.IdRols == (ComboType.SelectedItem as UserRol).IdRols).ToList();
+            _currentUser = _currentUser.Where(p => p.Login.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+
+
+            UserListDG.ItemsSource = _currentUser;
+            TextBlockCount.Text = $"Результат запроса: {_currentUser.Count} записей из {_itemcount-1}";
+        }
+
+        private void TBoxSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void ComboRolSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateData();
+        }
+
         private void EditorClick(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new AddUserPage((sender as Button).DataContext as User));
@@ -70,6 +98,11 @@ namespace TatarCulturaWpf
                 TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 UserListDG.ItemsSource = TatarCulturDbEntities.GetContext().Users.OrderBy(p => p.Login).ToList();
             }
+        }
+
+        private void btnBackClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
         }
     }
 }

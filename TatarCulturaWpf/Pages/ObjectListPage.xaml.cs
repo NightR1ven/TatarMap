@@ -22,10 +22,22 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class ObjectListPage : Page
     {
+        int _itemcount = 0;
         private Models.Object _tatObject = new Models.Object();
         public ObjectListPage()
         {
             InitializeComponent();
+
+            var type = TatarCulturDbEntities.GetContext().Types.OrderBy(p => p.Name).ToList();
+            type.Insert(0, new Models.Type
+            {
+                Name = "Все типы"
+            });
+            ComboType.ItemsSource = type;
+            ComboType.SelectedIndex = 0;
+            ObjectListDG.ItemsSource = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
+            _itemcount = ObjectListDG.Items.Count;
+            TextBlockCount.Text = $"Результат запроса: {_itemcount-1} записей из {_itemcount-1}";
         }
 
         private void BtnDeleteClick(object sender, RoutedEventArgs e)
@@ -42,12 +54,37 @@ namespace TatarCulturaWpf.Pages
                     MessageBox.Show("Записи удалены");
                     List<Models.Object> services = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
                     ObjectListDG.ItemsSource = services;
+                    if(ObjectListDG.ItemsSource!=null)
+                    {
+                        
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+        }
+        private void TBoxSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void ComboTypeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void UpdateData()
+        {
+            var _currentObject = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
+            if (ComboType.SelectedIndex > 0)
+                _currentObject = _currentObject.Where(p => p.IdType == (ComboType.SelectedItem as Models.Type).IdType).ToList();
+            _currentObject = _currentObject.Where(p => p.Name.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+
+
+            ObjectListDG.ItemsSource = _currentObject;
+            TextBlockCount.Text = $"Результат запроса: {_currentObject.Count} записей из {_itemcount}";
         }
 
         private void BtnAddClick(object sender, RoutedEventArgs e)
@@ -74,6 +111,11 @@ namespace TatarCulturaWpf.Pages
         {
             
             Manager.MainFrame.Navigate(new CommentObjectPage((sender as Button).DataContext as Models.Object));
+        }
+
+        private void btnBackClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
         }
     }
 }

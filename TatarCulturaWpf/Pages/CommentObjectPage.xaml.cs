@@ -21,16 +21,29 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class CommentObjectPage : Page
     {
-        private Comment _currrentComment = new Comment();
-        private Models.Object _currentObject = new Models.Object();
+        int _itemcount = 0;
         public CommentObjectPage(Models.Object tatObject)
         {
             InitializeComponent();
             LoadData(tatObject);
-
-
+            _itemcount = CommentListDG.Items.Count;
+            TextBlockCount.Text = $"Результат запроса: {_itemcount-1} записей из {_itemcount-1}";
         }
 
+        private void UpdateData()
+        {
+            var _currentComment = TatarCulturDbEntities.GetContext().Comments.OrderBy(p => p.IdComment).ToList();
+            _currentComment = _currentComment.Where(p => p.User.Login.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+
+
+            CommentListDG.ItemsSource = _currentComment;
+            TextBlockCount.Text = $"Результат запроса: {_currentComment.Count} записей из {_itemcount-1}";
+        }
+
+        private void TBoxSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateData();
+        }
 
         void LoadData(Models.Object tatObject)
         {
@@ -39,7 +52,15 @@ namespace TatarCulturaWpf.Pages
 
         private void btnSaveClick(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                TatarCulturDbEntities.GetContext().SaveChanges();
+                MessageBox.Show("Изменения сохранены");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка");
+            }
         }
 
         private void btnDeleteClick(object sender, RoutedEventArgs e)
@@ -70,6 +91,11 @@ namespace TatarCulturaWpf.Pages
             {
                 TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
             }
+        }
+
+        private void btnBackClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
         }
     }
 }

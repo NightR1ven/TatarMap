@@ -31,7 +31,8 @@ namespace TatarCulturaWpf.Pages
             InitializeComponent();
             _photoName = _currentUser.UserPhoto;
             DataContext = _currentUser;
-            cmbRol.ItemsSource = TatarCulturDbEntities.GetContext().UserRols.ToList();
+            _currentUser.IdRols = (int)3;
+
         }
 
         string ChangePhotoName()
@@ -54,17 +55,29 @@ namespace TatarCulturaWpf.Pages
 
         private void BtnSaveClick(object sender, RoutedEventArgs e)
         {
+           
+            List<User> users = TatarCulturDbEntities.GetContext().Users.ToList();
+            User user = users.FirstOrDefault(p => p.Login == _currentUser.Login);
+           
             StringBuilder s = new StringBuilder();
             if (string.IsNullOrWhiteSpace(_currentUser.Login))
                 s.AppendLine("Поле логин пустое");
+            if (user != null)
+            {
+                string user1 = user.Login;
+                if (user1 == _currentUser.Login)
+                    s.AppendLine("Такой Логин уже зарегистрирован");
+            }
             if (tbPassword.Text != tbPassword1.Text)
                 s.AppendLine("Пароль не совподают");
             if (string.IsNullOrWhiteSpace(_currentUser.Password))
                 s.AppendLine("Поле пароль пустое");
             if (string.IsNullOrWhiteSpace(tbPassword1.Text))
                 s.AppendLine("Повторите пароль");
-            if (_currentUser.UserRol == null)
-                s.AppendLine("Категория не выбрана");
+            //if (_currentUser.UserRol == null)
+            //    s.AppendLine("Категория не выбрана");
+            if (string.IsNullOrWhiteSpace(_photoName))
+                s.AppendLine("фото не выбрано пустое");
 
             if (s.Length > 0)
             {
@@ -73,6 +86,7 @@ namespace TatarCulturaWpf.Pages
             }
             if (_currentUser.IdUser == 0)
             {
+                _currentUser.IdRols = 2;
                 string photo = ChangePhotoName();
                 string dest = _currentDirectory + photo;
                 File.Copy(_filePath, dest);

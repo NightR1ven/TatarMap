@@ -25,6 +25,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Button x:Name="btnBack" Grid.Row="0" Grid.Column="2"  Content="Вернуться" Click="btnBackClick" Margin="5" 
+            HorizontalAlignment="Right" Style="{DynamicResource ButtonUIRed}" TabIndex="2"/>
             <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding Description}" Style="{DynamicResource Text}"/>
             <Grid Grid.Row="0" Grid.Column="0">
                 <Grid.RowDefinitions>

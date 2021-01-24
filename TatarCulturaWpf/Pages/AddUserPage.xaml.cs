@@ -73,6 +73,9 @@ namespace TatarCulturaWpf.Pages
                 s.AppendLine("Повторите пароль");
             if (_currentUser.UserRol == null)
                 s.AppendLine("Категория не выбрана");
+            if(string.IsNullOrWhiteSpace(_photoName))
+                s.AppendLine("фото не выбрано пустое");
+
 
             if (s.Length > 0)
             {
@@ -152,6 +155,11 @@ namespace TatarCulturaWpf.Pages
                 MessageBox.Show("Нет файла");
                 _filePath = null;
             }
+        }
+
+        private void BtnAddClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

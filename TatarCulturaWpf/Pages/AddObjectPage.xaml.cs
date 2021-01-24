@@ -51,21 +51,32 @@ namespace TatarCulturaWpf.Pages
                 s.AppendLine("Поле описание пустое");
             if (_currentObject.Type == null)
                 s.AppendLine("Тип не выбрана");
-            //if (string.IsNullOrWhiteSpace(tbPhotoName.Text))
-            //    s.AppendLine("Фото не выбрано пустое");
-            if (tbLatitude == null) ;
-            s.AppendLine("Поле ширины пустое");
-            if (tbLongitude == null) ;
-            s.AppendLine("Поле долгота пустое");
-            if (Convert.ToInt16(tbLatitude) > 90) ;
-            s.AppendLine("Поле ширины не корректно");
-            if (Convert.ToInt16(tbLatitude) < -90) ;
-            s.AppendLine("Поле ширины не корректно");
-            if (Convert.ToInt16(tbLongitude) > 180) ;
-            s.AppendLine("Поле долгота не корректно");
-            if (Convert.ToInt16(tbLongitude) > -180) ;
-            s.AppendLine("Поле долгота не корректно");
+            //if (string.IsNullOrWhiteSpace(_photoName))
+            //    s.AppendLine("фото не выбрано пустое");
+
+            if (!string.IsNullOrWhiteSpace(tbLongitude.Text))
+            {
+                double x = 0;
+                if (!double.TryParse(tbLongitude.Text.Replace(".", ","), out x))
+                    s.AppendLine("Долгота только число");
+                else if ((x > 180) | (x < -180))
+                s.AppendLine("Долгота должа быть не больше 180 и не меньше -180");
+               
+            }
+            else s.AppendLine("Поле долгота пустое");
+            if (!string.IsNullOrWhiteSpace(tbLatitude.Text))
+            {
+                double x = 0;
+                if (!double.TryParse(tbLatitude.Text.Replace(".",","), out x))
+                    s.AppendLine("Ширина только число");
+                else if (x > 90 | x< -90)
+                s.AppendLine("Поле ширины должа быть не больше 90 и не меньше -90");
+            }
+            else s.AppendLine("Поле ширины пустое");
+
             return s;
+
+ 
         }
 
         string ChangePhotoName()

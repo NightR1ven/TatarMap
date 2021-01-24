@@ -28,5 +28,10 @@ namespace TatarCulturaWpf.Pages
             DataContext = user;
             ListBoxComment.ItemsSource = TatarCulturDbEntities.GetContext().Comments.Where(p=>p.IdUser==user.IdUser).OrderBy(p => p.IdComment).ToList();
         }
+
+        private void btnBackClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
     }
 }

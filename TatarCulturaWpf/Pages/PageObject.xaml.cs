@@ -102,5 +102,10 @@ namespace TatarCulturaWpf.Pages
         {
             Manager.MainFrame.Navigate(new AddCommentsPage());
         }
+
+        private void btnBackClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
     }
 }

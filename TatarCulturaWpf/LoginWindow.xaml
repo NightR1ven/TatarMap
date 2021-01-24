@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TatarCulturaWpf"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="280" Width="440" WindowStartupLocation="CenterScreen"
+        Title="Авторизация" Height="280" Width="440" WindowStartupLocation="CenterScreen"
         IsVisibleChanged="WindowIsVisibalChanged" MinWidth="440" MinHeight="280">
     <Grid>
         <Grid.RowDefinitions>
