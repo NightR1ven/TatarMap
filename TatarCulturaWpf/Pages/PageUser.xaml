@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:TatarCulturaWpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -10,12 +11,12 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
@@ -26,12 +27,19 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                    <Label Content="{Binding Login}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{StaticResource LabelObject}" />
-                    <Label Content="{Binding UserRol.NameRols}" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{StaticResource LabelRed}" FontSize="14"/>
+                    <Label Content="{Binding Login}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{StaticResource LabelGreen}"  FontSize="46"/>
+                    <Label Content="{Binding UserRol.NameRols}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Style="{StaticResource LabelObject}"/>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Label Content="Монет" Style="{DynamicResource LabelGreen}" FontSize="36"/>
+                        <Label Content="{Binding Coin}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{StaticResource LabelGreen}"  FontSize="36"/>
+                    </StackPanel>
+
                 </StackPanel>
+
+
             </Grid>
             <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" 
-                     HorizontalAlignment="Right" Panel.ZIndex="3" Style="{DynamicResource ButtonUIRed}" TabIndex="1"/>
+                     HorizontalAlignment="Left" Panel.ZIndex="3" Style="{DynamicResource ButtonUIGreen}" TabIndex="1"/>
             <Image Source="/TatarCulturaWpf;component/Resources/background.jpg" Stretch="UniformToFill" Grid.Row="0" Opacity="0.6" Panel.ZIndex="1"/>
             <TextBlock Grid.Row="0" Background="Black" Panel.ZIndex="0"/>
             <Ellipse Width="75" Height="75" Panel.ZIndex="2">
@@ -39,22 +47,49 @@
                     <ImageBrush ImageSource="{Binding GetUserPhoto}" />
                 </Ellipse.Fill>
             </Ellipse>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                <Button x:Name="btnComment" Content="Комментарии" Click="btnCommentClick" Margin="3,3,0,3"  Height="25" Width="100"  Panel.ZIndex="3" Style="{DynamicResource ButtonUI}" TabIndex="2"/>
+                <Button x:Name="btnKey"  Content="Коды" Click="btnKeyClick" Margin="3,3,0,3"  Height="25" Width="80"  Panel.ZIndex="3" Style="{DynamicResource ButtonUI}" TabIndex="3"/>
+            </StackPanel>
+
         </Grid>
         <Grid Grid.Row="1">
-            <ListBox x:Name="ListBoxComment" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch"  SelectedValuePath="IdComment">
+            <ListBox x:Name="ListBoxComment" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch"  
+                    Style="{StaticResource ObjectList}" ItemContainerStyle="{StaticResource ObjectItem}" SelectedValuePath="IdComment">
                 <ListBox.ItemTemplate >
                     <DataTemplate>
                         <StackPanel Margin="5" Orientation="Horizontal">
                             <Image Width="60" Height="60" Source="{Binding Object.GetObjectPhoto}" Margin="5" Stretch="UniformToFill" />
                             <StackPanel Orientation="Vertical">
                                 
-                                <Label Content="{Binding Object.Name}" Style="{StaticResource LabelRed}"/>
+                                <Label Content="{Binding Object.Name}" Style="{StaticResource LabelWhite}"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Content="☆" Style="{StaticResource LabelRed}" FontSize="18"/>
-                                    <Label Content="{Binding Star}" Style="{StaticResource LabelRed}" FontSize="18"/>
-                                    <Label Content="/5" Style="{StaticResource LabelRed}" FontSize="12"/>
+                                    <materialDesign:PackIcon Kind="Star" Foreground="Wheat"/>
+                                    <Label Content="{Binding Star}" FontSize="18" Style="{StaticResource LabelObject}"/>
+                                    <Label Content="/5"  FontSize="12" Style="{StaticResource LabelObject}"/>
                                 </StackPanel>
-                                <Label Content="{Binding Comment1}" Style="{StaticResource LabelObject}" FontSize="14"/>
+                                <Label Content="{Binding Comment1}" FontSize="14" FontStyle="Normal" Style="{StaticResource LabelObject}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox x:Name="ListBoxKey" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch"  
+                    Style="{StaticResource ObjectList}" ItemContainerStyle="{StaticResource ObjectItem}" SelectedValuePath="IdSale">
+                <ListBox.ItemTemplate >
+                    <DataTemplate>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Left"
+                                    >
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="{Binding Key.KeyEvent}" Style="{StaticResource LabelObject}" FontSize="24" FontStyle="Normal"/>
+                                <Label Content="{Binding GetEvent}" Style="{StaticResource LabelWhite}" FontSize="20" FontStyle="Normal"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Даты использования" Style="{StaticResource LabelWhite}" FontSize="14" FontStyle="Normal"/>
+                                    <Label Content="{Binding GetStartDateEvent}" Style="{StaticResource LabelWhite}" FontSize="14" FontStyle="Normal"/>
+                                    <Label Content="-" Style="{DynamicResource LabelObject}" FontSize="16" FontStyle="Normal"/>
+                                    <Label Content="{Binding GetEndDateEvent}" Style="{StaticResource LabelWhite}" FontSize="14" FontStyle="Normal"/>
+                                </StackPanel>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>

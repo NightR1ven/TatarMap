@@ -18,9 +18,9 @@ namespace TatarCulturaWpf.Models
         public Nullable<int> IdUser { get; set; }
         public Nullable<int> IdObject { get; set; }
         public string Comment1 { get; set; }
-        public Nullable<int> Star { get; set; }
+        public Nullable<double> Star { get; set; }
     
-        public virtual User User { get; set; }
         public virtual Object Object { get; set; }
+        public virtual User User { get; set; }
     }
 }

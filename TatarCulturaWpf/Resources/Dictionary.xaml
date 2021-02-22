@@ -2,46 +2,38 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:TatarCulturaWpf.Resources">
 
-    <SolidColorBrush x:Key="Red" Color="#C20031"/>
-    <SolidColorBrush x:Key="RedDark" Color="#960018"/>
+    <SolidColorBrush x:Key="LightGreen" Color="#3CB371"/>
+    <SolidColorBrush x:Key="DarkGreen" Color="#2E8B57"/>
+    <SolidColorBrush x:Key="BackMap" Color="#B2262626"/>
+    <SolidColorBrush x:Key="Background" Color="#262626"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="Green"/>
 
-    <SolidColorBrush x:Key="Green" Color="#009900"/>
-    <SolidColorBrush x:Key="GreenDark" Color="#007500"/>
-
-    
     <Style x:Key="ButtonUI" TargetType="Button">
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="{DynamicResource RedDark}"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource RedDark}"/>
-    </Style>
-
-    <Style x:Key="ButtonUIPage" TargetType="Button">
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Height" Value="30"/>
-    </Style>
-
-    <Style x:Key="ButtonUIRed" TargetType="Button">
-        <Setter Property="Height" Value="100"/>
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Background" Value="{StaticResource RedDark}"/>
+        <Setter Property="Background" Value="{StaticResource Background}"/>
         <Setter Property="FontFamily" Value="Arial"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Height" Value="30"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource RedDark}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource LightGreen}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style x:Key="ButtonUIGreen" TargetType="Button">
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Background" Value="{StaticResource DarkGreen}"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="BorderThickness" Value="0"/>
     </Style>
 
 
-    <Style x:Key="LabelRed" TargetType="Label">
+    <Style x:Key="LabelGreen" TargetType="Label">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="Foreground" Value="{DynamicResource RedDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DarkGreen}"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
@@ -55,35 +47,109 @@
     <Style x:Key="LabelObject" TargetType="Label">
         <Setter Property="FontSize" Value="30"/>
         <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
     <Style x:Key="Text" TargetType="TextBlock">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
-    <Style x:Key="LabelList" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-    </Style>
 
     <Style x:Key="base_win" TargetType="Window">
         <Setter Property="WindowState" Value="Maximized"/>
     </Style>
 
-    <Style x:Key="ComboEstimation" TargetType="ComboBox">
-        <Setter Property="FontSize" Value="18"/>
-        <Setter Property="FontFamily" Value="Arial"/>
-        <Setter Property="Foreground" Value="{DynamicResource RedDark}"/>
-        <Setter Property="FontWeight" Value="Bold"/>
+    <Style TargetType="ListBoxItem" x:Key="ObjectItem">
+        <Setter Property="Background" Value="{StaticResource DarkGreen}"/>
+        <Setter Property="IsEnabled" Value="{Binding GetDate}"/>
+        <Setter Property="IsEnabled" Value="{Binding GetKeyCheck}"/>
+        <Setter Property="Margin" Value="2"/>
     </Style>
 
+    <Style TargetType="ListView" x:Key="EventList">
+        <Setter Property="Background" Value="{StaticResource LightGreen}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+
+    </Style>
+    
+    <Style TargetType="ListBox" x:Key="ObjectList">
+        <Setter Property="Background" Value="{StaticResource LightGreen}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+
+    </Style>
+
+    <Style TargetType="ListViewItem" x:Key="EventItem">
+        <Setter Property="Background" Value="{Binding GetColor}"/>
+        <Setter Property="Background" Value="{Binding GetKeyColor}"/>
+        <Setter Property="IsEnabled" Value="{Binding GetDate}"/>
+        <Setter Property="IsEnabled" Value="{Binding GetKeyCheck}"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{StaticResource Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGreen}"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    <Style TargetType="DataGrid">
+        <Setter Property="Background" Value="{StaticResource Background}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource DarkGreen}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="PasswordBox">
+        <Setter Property="Background" Value="{StaticResource DarkGreen}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Foreground" Value="{StaticResource DarkGreen}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DarkGreen}"/>
+    </Style>
+
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="BorderBrush" Value="{StaticResource DarkGreen}"/>
+        <Setter Property="BorderThickness" Value="0.8"/>
+        <Setter Property="Background" Value="{StaticResource Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource LightGreen}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Padding" Value="2"/>
+    </Style>
+    
+    <Style TargetType="Label" x:Key="EventLabelDate">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Visibility" Value="{Binding GetDateVisible}"/>
+    </Style>
+    <Style TargetType="Label" x:Key="EventLabelKey">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Visibility" Value="{Binding GetKeyVisible}"/>
+    </Style>
+    <Style TargetType="Image" x:Key="EventImage">
+        <Setter Property="IsEnabled" Value="{Binding GetImageIsEnable}"/>
+    </Style>
 
 
 

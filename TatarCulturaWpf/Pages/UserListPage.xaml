@@ -18,12 +18,12 @@
                    HorizontalAlignment="Stretch">
 
             <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Введите логин для поска:"/>
+                <TextBlock Text="Введите логин для поска:" Style="{StaticResource Text}" Margin="5,5"/>
                 <TextBox Width="275" Margin="5,0" x:Name="TBoxSearch"
                           TextChanged="TBoxSearchTextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Выберите роль пользователя"/>
+                <TextBlock Text="Выберите роль пользователя" Style="{StaticResource Text}" Margin="5,5"/>
                 <ComboBox Width="275" Margin="5,0" x:Name="ComboType"
                           SelectionChanged="ComboRolSelectionChanged"
                           DisplayMemberPath="NameRols"/>
@@ -33,7 +33,7 @@
         
         <DataGrid x:Name="UserListDG" AutoGenerateColumns="False" TabIndex="1" Grid.Row="1" >
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="auto" Header="Editor">
+                <DataGridTemplateColumn Width="auto" Header="Редактировать">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="Editor" Content="Редактировать" Click="EditorClick" Style="{DynamicResource ButtonUI}"/>
@@ -41,18 +41,20 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding IdUser}" Header="Id" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Login}" Header="Login" Width="5*"/>
-                <DataGridTextColumn Binding="{Binding Password}" Header="Password" Width="5*"/>
-                <DataGridTextColumn Binding="{Binding Coin}" Header="Coins" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding UserRol.NameRols}" Header="Rol" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="5*"/>
+                <DataGridTextColumn Binding="{Binding Password}" Header="Пароль" Width="5*"/>
+                <DataGridTextColumn Binding="{Binding Coin}" Header="Монеты" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding UserRol.NameRols}" Header="Роль" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
         
-        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left" 
+                   Style="{StaticResource Text}" Margin="5,0,5,0"/>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="3"/>
-            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5" Style="{StaticResource ButtonUIRed}" TabIndex="4"/>
+            <Button x:Name="btnAdd" Content="Добавить" Click="BtnAddClick"  Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="2"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5" Style="{StaticResource ButtonUIGreen}" TabIndex="3"/>
+            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="4"/>
         </StackPanel>
     </Grid>
 </Page>

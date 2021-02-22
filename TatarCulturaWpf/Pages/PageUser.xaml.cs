@@ -26,12 +26,26 @@ namespace TatarCulturaWpf.Pages
         {
             InitializeComponent();
             DataContext = user;
+            ListBoxKey.Visibility = Visibility.Collapsed;
             ListBoxComment.ItemsSource = TatarCulturDbEntities.GetContext().Comments.Where(p=>p.IdUser==user.IdUser).OrderBy(p => p.IdComment).ToList();
+            ListBoxKey.ItemsSource = TatarCulturDbEntities.GetContext().Sales.Where(p => p.IdUser == user.IdUser).OrderBy(p => p.IdSale).ToList();
         }
-
+        
         private void btnBackClick(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.GoBack();
+        }
+
+        private void btnCommentClick(object sender, RoutedEventArgs e)
+        {
+            ListBoxKey.Visibility = Visibility.Collapsed;
+            ListBoxComment.Visibility = Visibility.Visible;
+        }
+
+        private void btnKeyClick(object sender, RoutedEventArgs e)
+        {
+            ListBoxComment.Visibility = Visibility.Collapsed;
+            ListBoxKey.Visibility = Visibility.Visible;
         }
     }
 }

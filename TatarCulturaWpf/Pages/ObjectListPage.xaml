@@ -19,12 +19,12 @@
                    HorizontalAlignment="Stretch">
 
             <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Введите название для поска:"/>
+                <TextBlock Text="Введите название для поска:" Style="{DynamicResource Text}"/>
                 <TextBox Width="275" Margin="5,0" x:Name="TBoxSearch"
-                          TextChanged="TBoxSearchTextChanged"/>
+                          TextChanged="TBoxSearchTextChanged" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Выберите тип места"/>
+                <TextBlock Text="Выберите тип места" Style="{DynamicResource Text}"/>
                 <ComboBox Width="275" Margin="5,0" x:Name="ComboType"
                           SelectionChanged="ComboTypeSelectionChanged"
                           DisplayMemberPath="Name"/>
@@ -62,12 +62,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left"/>
-        
+        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left" Style="{DynamicResource Text}"/>
+
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnAdd" Content="Добавить" Click="BtnAddClick"  Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="2"/>
-            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="3"/>
-            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="4"/>
+            <Button x:Name="btnAdd" Content="Добавить" Click="BtnAddClick"  Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="2"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="3"/>
+            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="4"/>
         </StackPanel>
     </Grid>
 </Page>

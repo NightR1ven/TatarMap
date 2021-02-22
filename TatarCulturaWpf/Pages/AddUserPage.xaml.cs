@@ -25,6 +25,7 @@ namespace TatarCulturaWpf.Pages
     {
         private User _currentUser = new User();
         private string _filePath = null;
+        private string _fileCompare = null;
         private string _photoName = null;
         private static string _currentDirectory = Directory.GetCurrentDirectory() + @"\ImagesUsers\";
         public AddUserPage(User selecetUser)
@@ -36,6 +37,7 @@ namespace TatarCulturaWpf.Pages
             {
                 _currentUser = selecetUser;
             _filePath = _currentDirectory + _currentUser.UserPhoto;
+                _fileCompare = _filePath;
                 Title = "Редактирование данных пользователя";
             }
             _photoName = _currentUser.UserPhoto;
@@ -96,8 +98,12 @@ namespace TatarCulturaWpf.Pages
                 {
                     string photo = ChangePhotoName();
                     string dest = _currentDirectory + photo;
-                    File.Copy(_filePath, dest);
-                    _currentUser.UserPhoto = photo;
+                    if(_filePath!=_fileCompare)
+                    {
+                        File.Copy(_filePath, dest);
+                        _currentUser.UserPhoto = photo;
+                    }    
+                    
                 }
                 TatarCulturDbEntities.GetContext().SaveChanges();
                 MessageBox.Show("Запись Изменена");
@@ -155,11 +161,6 @@ namespace TatarCulturaWpf.Pages
                 MessageBox.Show("Нет файла");
                 _filePath = null;
             }
-        }
-
-        private void BtnAddClick(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

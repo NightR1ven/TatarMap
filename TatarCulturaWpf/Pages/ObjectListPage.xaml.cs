@@ -37,7 +37,7 @@ namespace TatarCulturaWpf.Pages
             ComboType.SelectedIndex = 0;
             ObjectListDG.ItemsSource = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
             _itemcount = ObjectListDG.Items.Count;
-            TextBlockCount.Text = $"Результат запроса: {_itemcount-1} записей из {_itemcount-1}";
+            TextBlockCount.Text = $"Результат запроса: {_itemcount - 1} записей из {_itemcount - 1}";
         }
 
         private void BtnDeleteClick(object sender, RoutedEventArgs e)
@@ -49,15 +49,21 @@ namespace TatarCulturaWpf.Pages
             {
                 try
                 {
-                    TatarCulturDbEntities.GetContext().Objects.RemoveRange(selectedObject);
+
+                    Models.Object x = selectedObject[0];
+                    if (x.Comments.Count > 0)
+                        throw new Exception("Есть связанные записи c ключами");
+                    if (x.Events.Count > 0)
+                        throw new Exception("Есть связанные записи c акциями");
+                    TatarCulturDbEntities.GetContext().Objects.Remove(x);
                     TatarCulturDbEntities.GetContext().SaveChanges();
                     MessageBox.Show("Записи удалены");
-                    List<Models.Object> services = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
-                    ObjectListDG.ItemsSource = services;
-                    if(ObjectListDG.ItemsSource!=null)
-                    {
-                        
-                    }
+
+                    List<Event> events =
+                    TatarCulturDbEntities.GetContext().Events.OrderBy(p =>
+                    p.Name).ToList();
+                    ObjectListDG.ItemsSource = null;
+                    ObjectListDG.ItemsSource = events;
                 }
                 catch (Exception ex)
                 {
@@ -94,11 +100,11 @@ namespace TatarCulturaWpf.Pages
 
         private void PageIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (Visibility==Visibility.Visible)
-            { 
-            TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-            List<Models.Object> tatObjects = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
-            ObjectListDG.ItemsSource = tatObjects;
+            if (Visibility == Visibility.Visible)
+            {
+                TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                List<Models.Object> tatObjects = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
+                ObjectListDG.ItemsSource = tatObjects;
             }
         }
 
@@ -109,7 +115,7 @@ namespace TatarCulturaWpf.Pages
 
         private void EditorCommentClick(object sender, RoutedEventArgs e)
         {
-            
+
             Manager.MainFrame.Navigate(new CommentObjectPage((sender as Button).DataContext as Models.Object));
         }
 

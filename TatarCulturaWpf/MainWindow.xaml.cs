@@ -33,6 +33,7 @@ namespace TatarCulturaWpf
             rols1 = rols;
             user1 = user;
             BtnActive.Visibility = Visibility.Collapsed;
+            BtnEvent.Visibility = Visibility.Collapsed;
             DataContext = user;
 
 
@@ -49,6 +50,8 @@ namespace TatarCulturaWpf
             BtnListObject.Visibility = Visibility.Collapsed;
             BtnListUsers.Visibility = Visibility.Collapsed;
             BtnMenu.Visibility = Visibility.Collapsed;
+            BtnEvent.Visibility = Visibility.Collapsed;
+            BtnListEvent.Visibility = Visibility.Collapsed;
 
         }
 
@@ -129,6 +132,7 @@ namespace TatarCulturaWpf
                     {
                         BtnListUsers.Visibility = Visibility.Collapsed;
                         BtnListObject.Visibility = Visibility.Collapsed;
+                        BtnListEvent.Visibility = Visibility.Collapsed;
                         break;
                     }
                     
@@ -168,6 +172,22 @@ namespace TatarCulturaWpf
         {
 
             Manager.MainFrame.Navigate(new UIStartMenuPage(rols1,user1));
+            BtnMenuClose.Visibility = Visibility.Collapsed;
+            BtnMenuOpen.Visibility = Visibility.Visible;
+            TextBlockMain.Visibility = Visibility.Hidden;
+        }
+
+        private void BtnEventClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new EventPage());
+            BtnMenuClose.Visibility = Visibility.Collapsed;
+            BtnMenuOpen.Visibility = Visibility.Visible;
+            TextBlockMain.Visibility = Visibility.Hidden;
+        }
+
+        private void BtnListEventClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new EventListPage());
             BtnMenuClose.Visibility = Visibility.Collapsed;
             BtnMenuOpen.Visibility = Visibility.Visible;
             TextBlockMain.Visibility = Visibility.Hidden;

@@ -8,34 +8,39 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Меню">
 
-    <Grid>
+    <Grid Background="{StaticResource Background}">
         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="Account" Visibility="Visible" Style="{DynamicResource ButtonUIPage}" Height="100"
+            <Button x:Name="Account" Visibility="Visible" Style="{DynamicResource ButtonUI}" Height="100"
                 Width="180" Margin="2.5" Click="AccountClick" TabIndex="1">
                 <StackPanel>
-                    <Label Content="Профиль"/>
+                    <Label Content="Профиль" FontSize="16"  Style="{StaticResource LabelWhite}"/>
                 </StackPanel>
             </Button>
 
 
-            <Button x:Name="UserList" Visibility="Visible" Style="{DynamicResource ButtonUIPage}"  Width="180" 
+            <Button x:Name="UserList" Visibility="Visible" Style="{DynamicResource ButtonUI}"  Width="180" 
                 Height="100" Margin="2.5" Click="UserListClick" TabIndex="2">
                 <StackPanel>
-                    <Label Content="Пользватели"/>
+                    <Label Content="Пользватели" FontSize="16" Style="{StaticResource LabelWhite}"/>
                 </StackPanel>
             </Button>
 
 
-            <Button x:Name="Object" Grid.Column="2" Grid.Row="1" Visibility="Visible" Style="{DynamicResource ButtonUIPage}" Height="100"
+            <Button x:Name="Object" Grid.Column="2" Grid.Row="1" Visibility="Visible" Style="{DynamicResource ButtonUI}" Height="100"
                 Width="180" Margin="2.5" Click="ObjeckListClick" TabIndex="3">
                         <StackPanel>
-                            <Label Content="Достопримечательности" Width="auto" FontSize="14"/>
+                    <Label Content="Достопримечательности" Width="auto" FontSize="13"  Style="{StaticResource LabelWhite}"/>
                         </StackPanel>
                     </Button>
 
+            <Button x:Name="Event" Grid.Column="2" Grid.Row="1" Visibility="Visible" Style="{DynamicResource ButtonUI}" Height="100"
+                Width="180" Margin="2.5" Click="EventListClick" TabIndex="3">
+                <StackPanel>
+                    <Label Content="Акции" Width="auto" FontSize="16"  Style="{StaticResource LabelWhite}"/>
+                </StackPanel>
+            </Button>
+            
         </StackPanel>
-
-
-        <Image Source="/Resources/BackgroundMenu.png" Panel.ZIndex="-1" HorizontalAlignment="Right" Stretch="UniformToFill"/>
+        
     </Grid>
 </Page>

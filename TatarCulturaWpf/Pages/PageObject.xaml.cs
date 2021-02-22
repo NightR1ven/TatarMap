@@ -61,8 +61,8 @@ namespace TatarCulturaWpf.Pages
             e.Handled = true;
 
             Point mousePosition = e.GetPosition(this);
-            Location pinLocation = MapZel.ViewportPointToLocation(mousePosition);
-            MapZel.Center = pinLocation;
+            Location pinLocation = MapTat.ViewportPointToLocation(mousePosition);
+            MapTat.Center = pinLocation;
         }
 
         private void MapZelMouseLeave(object sender, MouseEventArgs e)
@@ -75,14 +75,14 @@ namespace TatarCulturaWpf.Pages
             e.Handled = true;
 
             Point mousePosition = e.GetPosition(this);
-            Location pinLocation = MapZel.ViewportPointToLocation(mousePosition);
+            Location pinLocation = MapTat.ViewportPointToLocation(mousePosition);
 
         }
 
         private void PackIconMouseUp(object sender, MouseButtonEventArgs e)
         {
             Location pinLocation = new Location((double)_currentObject.Latitude, (double)_currentObject.Longitude);
-            MapZel.Center = pinLocation;
+            MapTat.Center = pinLocation;
         }
 
         private void TextBlockCoordsMouseDown(object sender, MouseButtonEventArgs e)

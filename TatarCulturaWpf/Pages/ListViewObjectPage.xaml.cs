@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,15 @@ namespace TatarCulturaWpf.Pages
         {
             InitializeComponent();
 
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+
+            Location pinLocation = new Location(55.7887, 49.1221);
+            MapTat.Center = pinLocation;
+
             var type = TatarCulturDbEntities.GetContext().Types.OrderBy(p => p.Name).ToList();
             type.Insert(0, new Models.Type
             {
@@ -34,11 +44,16 @@ namespace TatarCulturaWpf.Pages
             });
             ComboType.ItemsSource = type;
             ComboType.SelectedIndex = 0;
-            LViewObject.ItemsSource = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
+            
+            var obj= TatarCulturDbEntities.GetContext().Objects.ToList();
+
+
+            LViewObject.ItemsSource = obj;
             _itemcount = LViewObject.Items.Count;
             TextBlockCount.Text = $"Результат запроса: {_itemcount} записей из {_itemcount}";
-
         }
+
+       
 
         private void TBoxSearchTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -61,12 +76,29 @@ namespace TatarCulturaWpf.Pages
         
         private void UpdateData()
         {
+           
+
+
             var _currentObject = TatarCulturDbEntities.GetContext().Objects.OrderBy(p => p.Name).ToList();
             if (ComboType.SelectedIndex > 0)
+            {
                 _currentObject = _currentObject.Where(p => p.IdType == (ComboType.SelectedItem as Models.Type).IdType).ToList();
+            }
+               
             _currentObject = _currentObject.Where(p => p.Name.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
-
-
+            MapTat.Children.Clear();
+            foreach (Models.Object obj in _currentObject)
+            {
+                Location pinLocation = new Location((double)obj.Latitude, (double)obj.Longitude);
+                Location pinLocationCenter = new Location(55.60307988301807, 49.586290315150926);
+                var pin = new Pushpin();
+                pin.ToolTip = $"{obj.Name}";
+                pin.Location = pinLocation;
+                
+                MapTat.Children.Add(pin);
+                MapTat.ZoomLevel = 8;
+                MapTat.Center = pinLocationCenter;
+            }
             LViewObject.ItemsSource = _currentObject;
             TextBlockCount.Text = $"Результат запроса: {_currentObject.Count} записей из {_itemcount}";
         }
@@ -75,8 +107,70 @@ namespace TatarCulturaWpf.Pages
         {
             if (LViewObject.SelectedIndex >= 0)
             {
-                Manager.MainFrame.Navigate(new PageObject(LViewObject.SelectedItem as Models.Object));
+                MapTat.Children.Clear();
+                StackInfo.Visibility = Visibility.Visible;
+                Models.Object obj = (LViewObject.SelectedItem as Models.Object);
+                var i = TatarCulturDbEntities.GetContext().Objects.Where(x => x.IdObject == obj.IdObject).ToList();
+                Location pinLocation = new Location((double)obj.Latitude, (double)obj.Longitude);
+                Pushpin pin = new Pushpin();
+                pin.Location = pinLocation;
+               
+                MapTat.Children.Add(pin);
+                MapTat.ZoomLevel = 15;
+                MapTat.Center = pinLocation;
+                this.DataContext = obj;
+                
             }
+            else
+            StackInfo.Visibility = Visibility.Collapsed;
+        }
+
+        private void MapZelMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+
+            Point mousePosition = e.GetPosition(this);
+            Location pinLocation = MapTat.ViewportPointToLocation(mousePosition);
+            MapTat.Center = pinLocation;
+        }
+
+        private void MapZelMouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void MapZelMouseMove(object sender, MouseEventArgs e)
+        {
+            e.Handled = true;
+
+            Point mousePosition = e.GetPosition(this);
+            Location pinLocation = MapTat.ViewportPointToLocation(mousePosition);
+
+        }
+
+        private void PackIconMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+
+
+        private void PackIconMouseUpMenu(object sender, MouseButtonEventArgs e)
+        {
+            GridLength x = new GridLength(0, GridUnitType.Star);
+            if (gridWidth.Width==x)
+            {
+                gridWidth.Width = new GridLength(5, GridUnitType.Star);
+            }
+            else
+            gridWidth.Width = new GridLength(0, GridUnitType.Star);
+
+           
+        }
+
+        private void btnObjectClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new PageObject((sender as Button).DataContext as Models.Object));
         }
     }
 }

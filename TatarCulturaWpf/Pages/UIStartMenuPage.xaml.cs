@@ -74,6 +74,12 @@ namespace TatarCulturaWpf.Pages
             Manager.MainFrame.Navigate(new UserListPage() );
         }
 
-
+        private void EventListClick(object sender, RoutedEventArgs e)
+        {
+            if (rols1 < 3)
+                Manager.MainFrame.Navigate(new EventPage());
+            else
+                Manager.MainFrame.Navigate(new EventListPage());
+        }
     }
 }

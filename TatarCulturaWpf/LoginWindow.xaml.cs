@@ -70,8 +70,9 @@ namespace TatarCulturaWpf
 
         private void BtnCancelClick(object sender, RoutedEventArgs e)
         {
+            LoginWindow loginWindow = new LoginWindow();
             Owner.Show();
-            Close();
+            this.Hide();
         }
 
 
@@ -97,6 +98,11 @@ namespace TatarCulturaWpf
             registrationWindow.Owner = this;
             this.Hide();
             registrationWindow.Show();
+        }
+
+        private void WindowClosed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

@@ -1,0 +1,72 @@
+﻿<Page x:Class="TatarCulturaWpf.Pages.EventListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TatarCulturaWpf.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Список акций" IsEnabledChanged="PageIsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0"
+                   HorizontalAlignment="Stretch">
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Введите название для поска:" Style="{StaticResource Text}"/>
+                <TextBox Width="275" Margin="5,0" x:Name="TBoxSearch"
+                          TextChanged="TBoxSearchTextChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Выберите тип места" Style="{StaticResource Text}"/>
+                <ComboBox Width="275" Margin="5,0" x:Name="ComboType"
+                          SelectionChanged="ComboTypeSelectionChanged"
+                          DisplayMemberPath="Name"/>
+            </StackPanel>
+
+        </WrapPanel>
+
+        <DataGrid x:Name="EventListDG" AutoGenerateColumns="False" TabIndex="1"  Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="2*" Header="Редактировать информацию">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Editor" Content="Редактировать" Click="EditorClick" Style="{DynamicResource ButtonUI}" Width="auto" Height="auto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="4*"/>
+                <DataGridTextColumn Binding="{Binding Object.Name}" Header="Объект" Width="4*"/>
+                <DataGridTextColumn Binding="{Binding GetType}" Header="Тип" Width="1.5*"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="120" Height="75" Grid.Column="0" Stretch="UniformToFill" Source="{Binding Path=GetEventPhoto}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="1.5*" Header="Список ключей">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="EditorKey" Content="Взгялнуть" Click="EditorKeyClick" Style="{DynamicResource ButtonUI}" Width="auto" Height="auto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left" Style="{StaticResource Text}"/>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="btnAdd" Content="Добавить" Click="BtnAddClick"  Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="2"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="BtnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="3"/>
+            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="4"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -19,8 +19,6 @@ namespace TatarCulturaWpf.Models
             : base("name=TatarCulturDbEntities")
         {
         }
-
-
         private static TatarCulturDbEntities _context;
 
         public static TatarCulturDbEntities GetContext()
@@ -35,12 +33,14 @@ namespace TatarCulturaWpf.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<Key> Keys { get; set; }
+        public virtual DbSet<Object> Objects { get; set; }
+        public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRol> UserRols { get; set; }
-        public virtual DbSet<Object> Objects { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
     }
 }

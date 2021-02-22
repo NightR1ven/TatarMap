@@ -53,4 +53,10 @@ C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\Pag
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\PageUser.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddCommentsPage.g.cs
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddCommentsPage.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventPage.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.csprojAssemblyReference.cache
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventListPage.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\KeyListPage.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventListPage.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\KeyListPage.baml

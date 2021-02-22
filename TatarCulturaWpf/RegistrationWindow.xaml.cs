@@ -74,8 +74,6 @@ namespace TatarCulturaWpf.Pages
                 s.AppendLine("Поле пароль пустое");
             if (string.IsNullOrWhiteSpace(tbPassword1.Text))
                 s.AppendLine("Повторите пароль");
-            //if (_currentUser.UserRol == null)
-            //    s.AppendLine("Категория не выбрана");
             if (string.IsNullOrWhiteSpace(_photoName))
                 s.AppendLine("фото не выбрано пустое");
 
@@ -95,10 +93,8 @@ namespace TatarCulturaWpf.Pages
             }
             try
             {
-                
                 TatarCulturDbEntities.GetContext().SaveChanges();
-                MessageBox.Show("Запись Изменена");
-                
+                MessageBox.Show("Информация сохранена");
             }
             catch (Exception ex)
             {

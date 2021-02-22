@@ -19,14 +19,14 @@
                    HorizontalAlignment="Stretch">
 
             <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Введите логин для поска:"/>
+                <TextBlock Text="Введите логин для поска:" Style="{StaticResource Text}"/>
                 <TextBox Width="275" Margin="5,0" x:Name="TBoxSearch"
                           TextChanged="TBoxSearchTextChanged"/>
             </StackPanel>
 
         </WrapPanel>
 
-        <Label Content="{Binding Object.Name}" HorizontalAlignment="Left"/>
+        <Label Content="{Binding Object.Name}" HorizontalAlignment="Left" Width="100" Style="{StaticResource LabelGreen}"/>
         <DataGrid Grid.Row="1" x:Name="CommentListDG" AutoGenerateColumns="False" TabIndex="1" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding IdUser}" Header="Id User" Width="*"/>
@@ -35,12 +35,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left" Style="{StaticResource Text}"/>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="btnSave" Content="Сохранить" Click="btnSaveClick"  Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="2"/>
-            <Button x:Name="btnDelete" Content="Удалить" Click="btnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="3"/>
-            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIRed}" TabIndex="4"/>
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSaveClick"  Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="2"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="btnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="3"/>
+            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="4"/>
         </StackPanel>
     </Grid>
 </Page>

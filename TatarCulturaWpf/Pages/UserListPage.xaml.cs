@@ -49,15 +49,22 @@ namespace TatarCulturaWpf
             {
                 try
                 {
-                    TatarCulturDbEntities.GetContext().Users.RemoveRange(selectedUser);
+                    User x = selectedUser[0];
+                    if (x.Sales.Count > 0)
+                        throw new Exception("Есть связанные записи c истории");
+                    if (x.Comments.Count > 0)
+                        throw new Exception("Есть связанные записи c комментариями");
+                    TatarCulturDbEntities.GetContext().Users.Remove(x);
                     TatarCulturDbEntities.GetContext().SaveChanges();
                     MessageBox.Show("Записи удалены");
-                    List<User> services = TatarCulturDbEntities.GetContext().Users.OrderBy(p => p.IdRols).ToList();
-                    UserListDG.ItemsSource = services;
+
+                    List<User> users =TatarCulturDbEntities.GetContext().Users.OrderBy(p =>p.Login).ToList();
+                    UserListDG.ItemsSource = null;
+                    UserListDG.ItemsSource = users;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show(ex.Message.ToString(), "Ошибка удаления", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -103,6 +110,11 @@ namespace TatarCulturaWpf
         private void btnBackClick(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.GoBack();
+        }
+
+        private void BtnAddClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddUserPage((sender as Button).DataContext as User));
         }
     }
 }

@@ -11,12 +11,14 @@ namespace TatarCulturaWpf.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class Event
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Event()
         {
+            this.Keys = new HashSet<Key>();
             this.Users = new HashSet<User>();
         }
     
@@ -25,7 +27,179 @@ namespace TatarCulturaWpf.Models
         public Nullable<int> Coin { get; set; }
         public Nullable<System.DateTime> DateStarEvent { get; set; }
         public Nullable<System.DateTime> DateEndEvent { get; set; }
-    
+        public bool Active { get; set; }
+        public string EventPhoto { get; set; }
+        public Nullable<int> IdObject { get; set; }
+
+
+        public string GetEventPhoto
+        {
+            get
+            {
+                if (EventPhoto is null)
+                    return null;
+                return Directory.GetCurrentDirectory() + @"\ImagesEvent\" + EventPhoto.Trim();
+            }
+        }
+
+        public bool GetDate
+        {
+            get
+            {
+                if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
+                {
+                    if (Active)
+                        return true;
+
+                    else
+                        return false;
+                }
+                else
+                    return false;
+
+            }
+        }
+
+        public string GetColor
+        {
+            get
+            {
+                if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
+                {
+                    if (Active)
+                        return "#FFE9A865";
+
+                    else
+                        return "#262626";
+                }
+                else
+                    return "#262626";
+
+            }
+        }
+
+        public string GetKeyColor
+        {
+            get
+            {
+                int x = 0;
+                foreach (Key z in Keys)
+                {
+                    if (z.Active == false)
+                        x++;
+                }
+
+                if (x == 0)
+                    return "#262626";
+
+                return "#FFE9A865";
+
+            }
+        }
+
+        public string GetDateLabel
+        {
+            get
+            {
+                if (Active)
+                {
+                    if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
+                        return "Приобрести";
+                   
+                        return "Акция закончилась";
+
+                }
+
+                    return "Акция закончилась";
+            }
+        }
+
+        public string GetKeyVisible
+        {
+            get
+            {
+                if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
+                {
+                    if (Active)
+                        return "Visible";
+
+                    else
+                        return "Collapsed";
+                }
+                else
+                    return "Collapsed";
+
+
+            }
+        }
+
+        public string GetDateVisible
+        {
+            get
+            {
+                if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
+                {
+                    if (Active)
+                        return "Collapsed";
+
+                    else
+                        return "Visible";
+                }
+                else
+                    return "Visible";
+
+            }
+        }
+
+        public bool GetKeyCheck
+        {
+            get
+            {
+                int x = 0;
+                foreach (Key z in Keys)
+                {
+                    if (z.Active == false)
+                        x++;
+                }
+
+                if (x == 0)
+                    return false;
+
+                return true;
+
+            }
+        }
+
+        public string GetKeyLabel
+        {
+            get
+            {
+                int x = 0;
+                foreach (Key z in Keys)
+                {
+                    if (z.Active == false)
+                        x++;
+                }
+
+                if (x == 0)
+                    return "Коды закончились";
+
+                return "Приобрести";
+
+            }
+        }
+
+        public string GetType
+        {
+            get
+            {
+                return Object.Type.Name;
+            }
+        }
+
+        public virtual Object Object { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Key> Keys { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
     }

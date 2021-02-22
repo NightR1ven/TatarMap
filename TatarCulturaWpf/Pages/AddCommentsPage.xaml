@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TatarCulturaWpf.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Добавление комментария">
@@ -32,8 +33,8 @@
             <TextBox x:Name="tbUser" Text="{Binding User.IdUser}" Visibility="Collapsed"/>
             <TextBox x:Name="tbObject" Text="{Binding Object.IdObject}" Visibility="Collapsed"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Content="Комментрарий:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="16" Style="{StaticResource LabelObject}"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Оценка:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="16" Style="{StaticResource LabelObject}" />
+            <Label Grid.Row="1" Grid.Column="0" Content="Комментрарий:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="16" Style="{StaticResource LabelWhite}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Оценка:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="16" Style="{StaticResource LabelWhite}" />
 
 
             <TextBox x:Name="tbComment" Text="{Binding Comment1}"  Grid.Row="1" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,0,20,0" TabIndex="1"/>
@@ -48,18 +49,18 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-                    <Label Content="☆" Style="{StaticResource LabelRed}" FontSize="18"/>
-                    <Label Content="{Binding Star}" Style="{StaticResource LabelRed}" FontSize="18"/>
-                    <Label Content="/5" Style="{StaticResource LabelRed}" FontSize="12"/>
+                    <materialDesign:PackIcon Kind="Star" Foreground="Wheat"/>
+                    <Label Content="{Binding Star}" Style="{StaticResource LabelGreen}" FontSize="18"/>
+                    <Label Content="/5" Style="{StaticResource LabelGreen}" FontSize="12"/>
                 </StackPanel>
-                <ComboBox Grid.Row="1" x:Name="ComboBoxRating" Margin="8" SelectedIndex="0" Style="{StaticResource ComboEstimation}" TabIndex="2"/>
+                <ComboBox Grid.Row="1" x:Name="ComboBoxRating" Margin="8" SelectedIndex="0" TabIndex="2"/>
             </Grid>
 
         </Grid>
 
         <StackPanel  Grid.Row="6" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="BtnSave" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Height="25" Click="BtnSaveClick" Style="{DynamicResource ButtonUIRed}" TabIndex="3"/>
-            <Button x:Name="BtnCancel" Grid.Row="5" Content="Отмена" Margin="2" VerticalAlignment="Bottom" Width="120" Height="25" Click="BtnCancelClick" Style="{DynamicResource ButtonUIRed}" TabIndex="4"/>
+            <Button x:Name="BtnSave" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Height="25" Click="BtnSaveClick" Style="{DynamicResource ButtonUIGreen}" TabIndex="3"/>
+            <Button x:Name="BtnCancel" Grid.Row="5" Content="Отмена" Margin="2" VerticalAlignment="Bottom" Width="120" Height="25" Click="BtnCancelClick" Style="{DynamicResource ButtonUIGreen}" TabIndex="4"/>
         </StackPanel>
     </Grid>
 </Page>

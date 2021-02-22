@@ -26,6 +26,7 @@ namespace TatarCulturaWpf.Pages
         private Models.Object _currentObject = new Models.Object();
         private string _filePath = null;
         private string _photoName = null;
+        private string _fileCompare = null;
         private static string _currentDirectory = Directory.GetCurrentDirectory() + @"\Images\";
 
         public AddObjectPage(Models.Object tatObject)
@@ -35,8 +36,10 @@ namespace TatarCulturaWpf.Pages
             {
                 _currentObject = tatObject;
                 _filePath = _currentDirectory + _currentObject.ObjectPhoto;
+                _fileCompare = _filePath;
                 Title = "Редактироване информации об объекте";
             }
+            _filePath = _currentDirectory + _currentObject.ObjectPhoto;
             DataContext = _currentObject;
             _photoName = _currentObject.ObjectPhoto;
             cmbType.ItemsSource = TatarCulturDbEntities.GetContext().Types.ToList();
@@ -120,8 +123,11 @@ namespace TatarCulturaWpf.Pages
                 {
                     string photo = ChangePhotoName();
                     string dest = _currentDirectory + photo;
-                    File.Copy(_filePath, dest);
-                    _currentObject.ObjectPhoto = photo;
+                    if (_filePath != _fileCompare)
+                    {
+                        File.Copy(_filePath, dest);
+                       _currentObject.ObjectPhoto = photo;
+                    }
                 }
                 TatarCulturDbEntities.GetContext().SaveChanges();
                 MessageBox.Show("Запись Изменена");
@@ -158,9 +164,9 @@ namespace TatarCulturaWpf.Pages
                     _filePath = op.FileName;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Нет файла");
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 _filePath = null;
             }
         }
