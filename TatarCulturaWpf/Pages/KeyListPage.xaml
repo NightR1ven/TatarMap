@@ -6,9 +6,36 @@
       xmlns:local="clr-namespace:TatarCulturaWpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="KeyListPage">
+      Title="KeyListPage" IsVisibleChanged="PageIsVisibleChanged">
 
-    <Grid Margin="6,1,-6,-1">
+    <Grid>
+
+        <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+
+        <DataGrid Grid.Row="1" Grid.Column="1" x:Name="KeyListDG" AutoGenerateColumns="False" TabIndex="1" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=KeyEvent}" Header="Ключ" Width="6*"/>
+                <DataGridTemplateColumn Header="Активирован" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Active}" Content="{Binding Active}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         
+        <TextBlock Grid.Row="2" x:Name="TextBlockCount" HorizontalAlignment="Left" Style="{StaticResource Text}"/>
+
+    <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button x:Name="btnAdd" Content="Добавить" Click="BtnAddClick"  Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="2"/>
+        <Button x:Name="btnDelete" Content="Удалить" Click="btnDeleteClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="3"/>
+        <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Style="{DynamicResource ButtonUIGreen}" TabIndex="4"/>
+    </StackPanel>
     </Grid>
 </Page>

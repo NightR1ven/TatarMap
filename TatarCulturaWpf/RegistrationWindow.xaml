@@ -19,6 +19,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -27,17 +28,20 @@
             </Grid.ColumnDefinitions>
             <Rectangle Grid.Row="0" Grid.ColumnSpan="2" />
 
-            <Label Grid.Row="1" Grid.Column="0" Content="Логин:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18" Style="{StaticResource LabelWhite}"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Пароль:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
-            <Label Grid.Row="3" Grid.Column="0" Content="Пароль повторно:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
-
-            <Label Grid.Row="5" Grid.Column="0" Content="Картинка:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
+            <Label Grid.Row="1" Grid.Column="0" x:Name="lbLog" Content="Логин:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18" Style="{StaticResource LabelWhite}"/>
+            <Label Grid.Row="2" Grid.Column="0" x:Name="lbPas" Content="Пароль:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
+            <Label Grid.Row="2" Grid.Column="0" x:Name="lbCode" Content="Код:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}" Visibility="Collapsed"/>
+            <Label Grid.Row="3" Grid.Column="0" x:Name="lbPas1" Content="Пароль повторно:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
+            <Label Grid.Row="4" Grid.Column="0" x:Name="lbMail" Content="Почта" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
+            <Label Grid.Row="5" Grid.Column="0" x:Name="lbImg" Content="Картинка:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
 
 
             <TextBox x:Name="tbLogin" Text="{Binding Login}"  Grid.Row="1" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2"/>
 
             <TextBox x:Name="tbPassword" Text="{Binding Password}"  Grid.Row="2" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2"/>
+            <TextBox x:Name="tbCode" Grid.Row="2" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2"/>
             <TextBox x:Name="tbPassword1" Grid.Row="3" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2"/>
+            <TextBox x:Name="tbMail" Text="{Binding Mail}" Grid.Row="4" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2"/>
             <Image x:Name="imgPhoto" Source="{Binding Path = GetUserPhoto}" Grid.Row="5" Grid.Column="1"  Height="Auto" Margin="0,40" HorizontalAlignment="Left" Width="auto" />
             <Button x:Name="btnLoad" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="40" Click="BtnLoadClick" Style="{StaticResource ButtonUI}">
                 LOAD
@@ -45,7 +49,8 @@
         </Grid>
 
         <StackPanel  Grid.Row="6" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="BtnSave" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnSaveClick" Style="{DynamicResource ButtonUIGreen}"/>
+            <Button x:Name="BtnCode" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnCodeClick" Style="{DynamicResource ButtonUIGreen}"/>
+            <Button x:Name="BtnSave" Grid.Row="5" Content="Потвердить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnSaveClick" Style="{DynamicResource ButtonUIGreen}"/>
             <Button x:Name="BtnCancel" Grid.Row="5" Content="Отмена" Margin="2" VerticalAlignment="Bottom" Width="120"  Click="BtnCancelClick" Style="{DynamicResource ButtonUIGreen}"/>
         </StackPanel>
 

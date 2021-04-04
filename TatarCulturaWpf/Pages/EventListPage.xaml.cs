@@ -97,7 +97,7 @@ namespace TatarCulturaWpf.Pages
 
         private void BtnAddClick(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddObjectPage((sender as Button).DataContext as Models.Object));
+            Manager.MainFrame.Navigate(new AddEventPage((sender as Button).DataContext as Models.Event));
         }
 
         private void PageIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -109,10 +109,10 @@ namespace TatarCulturaWpf.Pages
                 EventListDG.ItemsSource = tatEvent;
             }
         }
-
+        
         private void EditorClick(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddObjectPage((sender as Button).DataContext as Models.Object));
+            Manager.MainFrame.Navigate(new AddEventPage((sender as Button).DataContext as Models.Event));
         }
 
         private void btnBackClick(object sender, RoutedEventArgs e)

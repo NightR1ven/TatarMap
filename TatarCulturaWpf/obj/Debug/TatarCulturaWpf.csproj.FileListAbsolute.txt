@@ -55,8 +55,16 @@ C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\Add
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddCommentsPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventPage.g.cs
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventPage.baml
-C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.csprojAssemblyReference.cache
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventListPage.g.cs
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\KeyListPage.g.cs
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\EventListPage.baml
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\KeyListPage.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddEventPage.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddTypePage.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddEventPage.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddTypePage.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddKeyPage.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\Pages\AddKeyPage.baml
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\TatarCulturaWpf.csprojAssemblyReference.cache
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\RecoverWindow.g.cs
+C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\obj\Debug\RecoverWindow.baml

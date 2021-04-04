@@ -1,0 +1,49 @@
+﻿<Window x:Class="TatarCulturaWpf.RecoverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TatarCulturaWpf"
+        mc:Ignorable="d"
+        Title="Восстановление " Height="450" Width="800" Closed="WindowClosed" IsVisibleChanged="WindowIsVisibleChanged">
+    <Grid Background="{StaticResource Background}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Row="0" Grid.ColumnSpan="2" />
+
+            <Label Grid.Row="1" Grid.Column="0" x:Name="lbPas" Content="Пароль:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}" Visibility="Collapsed"/>
+            <Label Grid.Row="2" Grid.Column="0" x:Name="lbCode" Content="Код:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}" Visibility="Collapsed"/>
+            <Label Grid.Row="2" Grid.Column="0" x:Name="lbMailLogin" Content="Почта или логин:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}"/>
+            <Label Grid.Row="3" Grid.Column="0" x:Name="lbPas1" Content="Пароль повторно:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{StaticResource LabelWhite}" Visibility="Collapsed"/>
+
+            <TextBox x:Name="tbPassword" Text="{Binding Password}"  Grid.Row="1" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2" Visibility="Collapsed"/>
+            <TextBox x:Name="tbCode" Grid.Row="2" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2" Visibility="Collapsed"/>
+            <TextBox x:Name="tbMailLogin" Grid.Row="2" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2"/>
+            <TextBox x:Name="tbPassword1" Grid.Row="3" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,10,2" Visibility="Collapsed"/>
+        </Grid>
+
+        <StackPanel  Grid.Row="6" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="BtnSearch" Grid.Row="5" Content="Потвердить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnSearchClick" Style="{DynamicResource ButtonUIGreen}"/>
+            <Button x:Name="BtnCode" Grid.Row="5" Content="Сохранить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnCodeClick" Style="{DynamicResource ButtonUIGreen}" Visibility="Collapsed"/>
+            <Button x:Name="BtnSave" Grid.Row="5" Content="Потвердить" Margin="2" VerticalAlignment="Bottom" Width="120" Click="BtnSaveClick" Style="{DynamicResource ButtonUIGreen}" Visibility="Collapsed"/>
+            <Button x:Name="BtnCancel" Grid.Row="5" Content="Отмена" Margin="2" VerticalAlignment="Bottom" Width="120"  Click="BtnCancelClick" Style="{DynamicResource ButtonUIGreen}"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

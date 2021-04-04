@@ -32,7 +32,7 @@
 
         </WrapPanel>
 
-        <DataGrid x:Name="ObjectListDG" AutoGenerateColumns="False" TabIndex="1"  Grid.Row="1">
+        <DataGrid x:Name="ObjectListDG" AutoGenerateColumns="False" TabIndex="1"  Grid.Row="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="auto" Header="Editor">
                     <DataGridTemplateColumn.CellTemplate>
@@ -42,16 +42,9 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding IdObject}" Header="Id" Width="*"/>
-                <DataGridTemplateColumn Width="100" Header="Photo">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Path=GetPhoto}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="4*"/>
                 <DataGridTextColumn Binding="{Binding Type.Name}" Header="Type" Width="3*"/>
-                <DataGridTextColumn Binding="{Binding Star.Star1}" Header="Rating" Width="*"/>
+                <DataGridTextColumn Binding="{Binding GetRate}" Header="Rating" Width="*"/>
                 <DataGridTemplateColumn Width="*" Header="Comment">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

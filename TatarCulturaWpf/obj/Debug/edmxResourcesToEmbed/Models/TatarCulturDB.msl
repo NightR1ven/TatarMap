@@ -1,20 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище TatarCulturDbModelContainer" CdmEntityContainer="TatarCulturDbEntities">
-    <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="TatarCulturDbModel.Event">
-        <MappingFragment StoreEntitySet="Event">
-          <ScalarProperty Name="IdObject" ColumnName="IdObject" />
-          <ScalarProperty Name="EventPhoto" ColumnName="EventPhoto" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="DateEndEvent" ColumnName="DateEndEvent" />
-          <ScalarProperty Name="DateStarEvent" ColumnName="DateStarEvent" />
-          <ScalarProperty Name="Coin" ColumnName="Coin" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Keys">
       <EntityTypeMapping TypeName="TatarCulturDbModel.Key">
         <MappingFragment StoreEntitySet="Key">
@@ -70,6 +56,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="TatarCulturDbModel.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
           <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
           <ScalarProperty Name="IdRols" ColumnName="IdRols" />
           <ScalarProperty Name="Coin" ColumnName="Coin" />
@@ -96,6 +83,19 @@
           <ScalarProperty Name="IdObject" ColumnName="IdObject" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
           <ScalarProperty Name="IdComment" ColumnName="IdComment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="TatarCulturDbModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="IdObject" ColumnName="IdObject" />
+          <ScalarProperty Name="EventPhoto" ColumnName="EventPhoto" />
+          <ScalarProperty Name="DateEndEvent" ColumnName="DateEndEvent" />
+          <ScalarProperty Name="DateStarEvent" ColumnName="DateStarEvent" />
+          <ScalarProperty Name="Coin" ColumnName="Coin" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

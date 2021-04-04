@@ -34,19 +34,10 @@ namespace TatarCulturaWpf.Pages
         private void LoadData()
         {
 
-            //var type = TatarCulturDbEntities.GetContext().Types.OrderBy(p => p.Name).ToList();
-            //type.Insert(0, new Models.Type
-            //{
-            //    Name = "Все типы"
-            //});
-            //ComboType.ItemsSource = type;
-            //ComboType.SelectedIndex = 0;
-
             var event1 = TatarCulturDbEntities.GetContext().Events.ToList();
 
-            LViewEvent.ItemsSource = event1;
+            LViewEvent.ItemsSource = TatarCulturDbEntities.GetContext().Events.ToList();
             _itemcount = LViewEvent.Items.Count;
-            //TextBlockCount.Text = $"Результат запроса: {_itemcount} записей из {_itemcount}";
 
 
         }
@@ -76,8 +67,6 @@ namespace TatarCulturaWpf.Pages
                         s.AppendLine("У вас не хватает монет");
                     if (_currentUser.Coin==0)
                         s.AppendLine("У вас нет монет");
-
-                    MessageBox.Show($"{_currentUser.Coin}");
 
                     if (s.Length > 0)
                     {
@@ -116,6 +105,10 @@ namespace TatarCulturaWpf.Pages
             if (Visibility == Visibility.Visible)
             {
                 TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                List<Models.Event> tatEvent = TatarCulturDbEntities.GetContext().Events.OrderBy(p => p.Name).ToList();
+                LViewEvent.ItemsSource = tatEvent;
+                LoadData();
+
             }
         }
     }

@@ -33,13 +33,12 @@ namespace TatarCulturaWpf
             rols1 = rols;
             user1 = user;
             BtnActive.Visibility = Visibility.Collapsed;
-            BtnEvent.Visibility = Visibility.Collapsed;
             DataContext = user;
 
 
         }
 
-        public MainWindow()
+       public MainWindow()
         {
             InitializeComponent();
             MainFrame.Navigate(new ListViewObjectPage());

@@ -65,18 +65,18 @@ namespace TatarCulturaWpf.Pages
 
         private void btnDeleteClick(object sender, RoutedEventArgs e)
         {
-            var selectedObject = CommentListDG.SelectedItems.Cast<Models.Comment>().ToList();
-            MessageBoxResult messageBoxResult = MessageBox.Show($"Удалить {selectedObject.Count()} записей???", "Удаление", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            var selectedEvent = CommentListDG.SelectedItems.Cast<Models.Comment>().ToList();
+            MessageBoxResult messageBoxResult = MessageBox.Show($"Удалить {selectedEvent.Count()} записей???", "Удаление", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
             if (messageBoxResult == MessageBoxResult.OK)
             {
                 try
                 {
-                    TatarCulturDbEntities.GetContext().Comments.RemoveRange(selectedObject);
+                    TatarCulturDbEntities.GetContext().Comments.RemoveRange(selectedEvent);
                     TatarCulturDbEntities.GetContext().SaveChanges();
                     MessageBox.Show("Записи удалены");
-                    List<Models.Comment> services = TatarCulturDbEntities.GetContext().Comments.OrderBy(p => p.IdComment).ToList();
-                    CommentListDG.ItemsSource = services;
+                    List<Models.Comment> comments = TatarCulturDbEntities.GetContext().Comments.OrderBy(p => p.IdComment).ToList();
+                    CommentListDG.ItemsSource = comments;
                 }
                 catch (Exception ex)
                 {

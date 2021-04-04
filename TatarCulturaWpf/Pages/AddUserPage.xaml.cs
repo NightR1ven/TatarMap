@@ -23,6 +23,7 @@ namespace TatarCulturaWpf.Pages
     /// </summary>
     public partial class AddUserPage : Page
     {
+        private int idUser1=0;
         private User _currentUser = new User();
         private string _filePath = null;
         private string _fileCompare = null;
@@ -40,6 +41,33 @@ namespace TatarCulturaWpf.Pages
                 _fileCompare = _filePath;
                 Title = "Редактирование данных пользователя";
             }
+            if(Manager.idUser==3)
+            {
+                cmbRol.Visibility = Visibility.Collapsed;
+                RolLabel.Visibility = Visibility.Collapsed;
+                _currentUser.IdRols = 3;
+            }
+            _photoName = _currentUser.UserPhoto;
+            DataContext = _currentUser;
+            cmbRol.ItemsSource = TatarCulturDbEntities.GetContext().UserRols.ToList();
+        }
+
+        public AddUserPage(User selecetUser,int idUser)
+        {
+
+            InitializeComponent();
+
+            if (selecetUser != null)
+            {
+                _currentUser = selecetUser;
+                _filePath = _currentDirectory + _currentUser.UserPhoto;
+                _fileCompare = _filePath;
+                Title = "Редактирование данных пользователя";
+            }
+                cmbRol.Visibility = Visibility.Collapsed;
+                RolLabel.Visibility = Visibility.Collapsed;
+            _currentUser.IdRols = idUser;
+            idUser1 = idUser;
             _photoName = _currentUser.UserPhoto;
             DataContext = _currentUser;
             cmbRol.ItemsSource = TatarCulturDbEntities.GetContext().UserRols.ToList();
@@ -73,7 +101,7 @@ namespace TatarCulturaWpf.Pages
                 s.AppendLine("Поле пароль пустое");
             if (string.IsNullOrWhiteSpace(tbPassword1.Text))
                 s.AppendLine("Повторите пароль");
-            if (_currentUser.UserRol == null)
+            if (_currentUser.UserRol == null && idUser1==0)
                 s.AppendLine("Категория не выбрана");
             if(string.IsNullOrWhiteSpace(_photoName))
                 s.AppendLine("фото не выбрано пустое");

@@ -24,7 +24,6 @@
           <Property Name="Coin" Type="int" />
           <Property Name="DateStarEvent" Type="date" />
           <Property Name="DateEndEvent" Type="date" />
-          <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="EventPhoto" Type="nvarchar(max)" />
           <Property Name="IdObject" Type="int" />
         </EntityType>
@@ -86,6 +85,7 @@
           <Property Name="Coin" Type="int" />
           <Property Name="IdRols" Type="int" />
           <Property Name="UserPhoto" Type="nvarchar(max)" />
+          <Property Name="Mail" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="UserRols">
           <Key>
@@ -254,7 +254,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="TatarCulturDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TatarCulturDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Events" EntityType="TatarCulturDbModel.Event" />
           <EntitySet Name="Keys" EntityType="TatarCulturDbModel.Key" />
           <EntitySet Name="Objects" EntityType="TatarCulturDbModel.Object" />
           <EntitySet Name="Sales" EntityType="TatarCulturDbModel.Sale" />
@@ -262,18 +261,6 @@
           <EntitySet Name="Types" EntityType="TatarCulturDbModel.Type" />
           <EntitySet Name="Users" EntityType="TatarCulturDbModel.User" />
           <EntitySet Name="UserRols" EntityType="TatarCulturDbModel.UserRol" />
-          <AssociationSet Name="FK_Event_Object" Association="TatarCulturDbModel.FK_Event_Object">
-            <End Role="Object" EntitySet="Objects" />
-            <End Role="Event" EntitySet="Events" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Key_Event" Association="TatarCulturDbModel.FK_Key_Event">
-            <End Role="Event" EntitySet="Events" />
-            <End Role="Key" EntitySet="Keys" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Event" Association="TatarCulturDbModel.FK_User_Event">
-            <End Role="Event" EntitySet="Events" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_Sale_Key" Association="TatarCulturDbModel.FK_Sale_Key">
             <End Role="Key" EntitySet="Keys" />
             <End Role="Sale" EntitySet="Sales" />
@@ -299,23 +286,20 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
+          <EntitySet Name="Events" EntityType="TatarCulturDbModel.Event" />
+          <AssociationSet Name="FK_Event_Object" Association="TatarCulturDbModel.FK_Event_Object">
+            <End Role="Object" EntitySet="Objects" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Key_Event" Association="TatarCulturDbModel.FK_Key_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="Key" EntitySet="Keys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Event" Association="TatarCulturDbModel.FK_User_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Event">
-          <Key>
-            <PropertyRef Name="IdEvent" />
-          </Key>
-          <Property Name="IdEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Coin" Type="Int32" />
-          <Property Name="DateStarEvent" Type="DateTime" Precision="0" />
-          <Property Name="DateEndEvent" Type="DateTime" Precision="0" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="EventPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IdObject" Type="Int32" />
-          <NavigationProperty Name="Object" Relationship="TatarCulturDbModel.FK_Event_Object" FromRole="Event" ToRole="Object" />
-          <NavigationProperty Name="Keys" Relationship="TatarCulturDbModel.FK_Key_Event" FromRole="Event" ToRole="Key" />
-          <NavigationProperty Name="Users" Relationship="TatarCulturDbModel.FK_User_Event" FromRole="Event" ToRole="User" />
-        </EntityType>
         <EntityType Name="Key">
           <Key>
             <PropertyRef Name="IdKey" />
@@ -324,8 +308,8 @@
           <Property Name="KeyEvent" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="IdEvent" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Event" Relationship="TatarCulturDbModel.FK_Key_Event" FromRole="Key" ToRole="Event" />
           <NavigationProperty Name="Sales" Relationship="TatarCulturDbModel.FK_Sale_Key" FromRole="Key" ToRole="Sale" />
+          <NavigationProperty Name="Event" Relationship="TatarCulturDbModel.FK_Key_Event" FromRole="Key" ToRole="Event" />
         </EntityType>
         <EntityType Name="Object">
           <Key>
@@ -338,9 +322,9 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Latitude" Type="Double" />
           <Property Name="Longitude" Type="Double" />
-          <NavigationProperty Name="Events" Relationship="TatarCulturDbModel.FK_Event_Object" FromRole="Object" ToRole="Event" />
           <NavigationProperty Name="Type" Relationship="TatarCulturDbModel.FK_Object_Type" FromRole="Object" ToRole="Type" />
           <NavigationProperty Name="Comments" Relationship="TatarCulturDbModel.FK_Comment_Object" FromRole="Object" ToRole="Comment" />
+          <NavigationProperty Name="Events" Relationship="TatarCulturDbModel.FK_Event_Object" FromRole="Object" ToRole="Event" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -382,10 +366,11 @@
           <Property Name="Coin" Type="Int32" />
           <Property Name="IdRols" Type="Int32" />
           <Property Name="UserPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Event" Relationship="TatarCulturDbModel.FK_User_Event" FromRole="User" ToRole="Event" />
           <NavigationProperty Name="Sales" Relationship="TatarCulturDbModel.FK_Sale_User" FromRole="User" ToRole="Sale" />
           <NavigationProperty Name="UserRol" Relationship="TatarCulturDbModel.FK_User_UserRols" FromRole="User" ToRole="UserRol" />
           <NavigationProperty Name="Comments" Relationship="TatarCulturDbModel.FK_Comment_User" FromRole="User" ToRole="Comment" />
+          <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Event" Relationship="TatarCulturDbModel.FK_User_Event" FromRole="User" ToRole="Event" />
         </EntityType>
         <EntityType Name="UserRol">
           <Key>
@@ -395,42 +380,6 @@
           <Property Name="NameRols" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="TatarCulturDbModel.FK_User_UserRols" FromRole="UserRol" ToRole="User" />
         </EntityType>
-        <Association Name="FK_Event_Object">
-          <End Type="TatarCulturDbModel.Object" Role="Object" Multiplicity="0..1" />
-          <End Type="TatarCulturDbModel.Event" Role="Event" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Object">
-              <PropertyRef Name="IdObject" />
-            </Principal>
-            <Dependent Role="Event">
-              <PropertyRef Name="IdObject" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Key_Event">
-          <End Type="TatarCulturDbModel.Event" Role="Event" Multiplicity="1" />
-          <End Type="TatarCulturDbModel.Key" Role="Key" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="IdEvent" />
-            </Principal>
-            <Dependent Role="Key">
-              <PropertyRef Name="IdEvent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Event">
-          <End Type="TatarCulturDbModel.Event" Role="Event" Multiplicity="0..1" />
-          <End Type="TatarCulturDbModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="IdEvent" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IdEvent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Sale_Key">
           <End Type="TatarCulturDbModel.Key" Role="Key" Multiplicity="1" />
           <End Type="TatarCulturDbModel.Sale" Role="Sale" Multiplicity="*" />
@@ -515,26 +464,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="IdEvent" />
+          </Key>
+          <Property Name="IdEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Coin" Type="Int32" />
+          <Property Name="DateStarEvent" Type="DateTime" Precision="0" />
+          <Property Name="DateEndEvent" Type="DateTime" Precision="0" />
+          <Property Name="EventPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdObject" Type="Int32" />
+          <NavigationProperty Name="Object" Relationship="TatarCulturDbModel.FK_Event_Object" FromRole="Event" ToRole="Object" />
+          <NavigationProperty Name="Keys" Relationship="TatarCulturDbModel.FK_Key_Event" FromRole="Event" ToRole="Key" />
+          <NavigationProperty Name="Users" Relationship="TatarCulturDbModel.FK_User_Event" FromRole="Event" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Event_Object">
+          <End Type="TatarCulturDbModel.Object" Role="Object" Multiplicity="0..1" />
+          <End Type="TatarCulturDbModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object">
+              <PropertyRef Name="IdObject" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="IdObject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Key_Event">
+          <End Type="TatarCulturDbModel.Event" Role="Event" Multiplicity="1" />
+          <End Type="TatarCulturDbModel.Key" Role="Key" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="Key">
+              <PropertyRef Name="IdEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Event">
+          <End Type="TatarCulturDbModel.Event" Role="Event" Multiplicity="0..1" />
+          <End Type="TatarCulturDbModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="IdEvent" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище TatarCulturDbModelContainer" CdmEntityContainer="TatarCulturDbEntities">
-          <EntitySetMapping Name="Events">
-            <EntityTypeMapping TypeName="TatarCulturDbModel.Event">
-              <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="IdObject" ColumnName="IdObject" />
-                <ScalarProperty Name="EventPhoto" ColumnName="EventPhoto" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="DateEndEvent" ColumnName="DateEndEvent" />
-                <ScalarProperty Name="DateStarEvent" ColumnName="DateStarEvent" />
-                <ScalarProperty Name="Coin" ColumnName="Coin" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Keys">
             <EntityTypeMapping TypeName="TatarCulturDbModel.Key">
               <MappingFragment StoreEntitySet="Key">
@@ -590,6 +576,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="TatarCulturDbModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
                 <ScalarProperty Name="IdRols" ColumnName="IdRols" />
                 <ScalarProperty Name="Coin" ColumnName="Coin" />
@@ -616,6 +603,19 @@
                 <ScalarProperty Name="IdObject" ColumnName="IdObject" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdComment" ColumnName="IdComment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="TatarCulturDbModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="IdObject" ColumnName="IdObject" />
+                <ScalarProperty Name="EventPhoto" ColumnName="EventPhoto" />
+                <ScalarProperty Name="DateEndEvent" ColumnName="DateEndEvent" />
+                <ScalarProperty Name="DateStarEvent" ColumnName="DateStarEvent" />
+                <ScalarProperty Name="Coin" ColumnName="Coin" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

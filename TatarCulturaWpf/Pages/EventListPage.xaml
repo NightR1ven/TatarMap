@@ -32,7 +32,7 @@
 
         </WrapPanel>
 
-        <DataGrid x:Name="EventListDG" AutoGenerateColumns="False" TabIndex="1"  Grid.Row="1">
+        <DataGrid x:Name="EventListDG" AutoGenerateColumns="False" TabIndex="1"  Grid.Row="1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="2*" Header="Редактировать информацию">
                     <DataGridTemplateColumn.CellTemplate>

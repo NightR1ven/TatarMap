@@ -40,8 +40,12 @@
             <Label Grid.Row="6" Grid.Column="0" Content="Изображение:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="16"  Style="{StaticResource LabelWhite}"/>
 
             <TextBox x:Name="tbName" Text="{Binding Name}"  Grid.Row="1" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,20,2" TabIndex="1"/>
-            <TextBox x:Name="tbDescription" Text="{Binding Description}" Grid.Row="2" Grid.Column="1" Margin="0,2,20,2" TextWrapping="Wrap"  FontSize="18" Padding="0,2" TabIndex="2"  />
-            <ComboBox x:Name="cmbType"  SelectedItem="{Binding Type}" Grid.Row="5" Grid.Column="1" Margin="0,2,20,2" VerticalAlignment="Stretch" FontSize="18" DisplayMemberPath="Name" SelectedValuePath="0" TabIndex="5"/>
+            <TextBox x:Name="tbDescription" Text="{Binding Description}" Grid.Row="2" Grid.Column="1" Margin="0,2,20,2" TextWrapping="Wrap"  FontSize="18" Padding="0,2" TabIndex="2"  MaxLength="1000"/>
+            
+            <ComboBox x:Name="cmbType"  SelectedItem="{Binding Type}" Grid.Row="5" Grid.Column="1" Margin="0,2,105,2" VerticalAlignment="Stretch" FontSize="18" DisplayMemberPath="Name" SelectedValuePath="0" TabIndex="5"/>
+            <Button x:Name="btnComb" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource ButtonUI}" Width="60" Height="30" Click="BtnCombClick" TabIndex="6" HorizontalAlignment="Right" Margin="5,0,20,0">
+                +
+            </Button>
             <TextBox x:Name="tbLatitude" Text="{Binding Latitude}"  Grid.Row="3" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,20,2" TabIndex="3"/>
             <TextBox x:Name="tbLongitude" Text="{Binding Longitude}"  Grid.Row="4" Grid.Column="1" FontSize="18" Padding="0,2" Margin="0,2,20,2" TabIndex="4"/>
             <TextBox x:Name="tbPhotoName" Visibility="Hidden" Text="{Binding Photo}" Grid.Row="6" Grid.Column="1"  Height="40" Margin="60,2,0,2" VerticalAlignment="Top" FontSize="18" Padding="0,2" IsReadOnly="True"/>

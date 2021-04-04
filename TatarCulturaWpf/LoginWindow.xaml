@@ -41,14 +41,13 @@
         </Grid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
-        <Label  Content="Запомнить меня" Grid.Row='2' FontSize="10" VerticalAlignment="Center" Style="{StaticResource LabelGreen}" />
-            <CheckBox x:Name="CheckerBox" VerticalAlignment="Center" TabIndex="3"/>
+            <Label  Content="Забыл пароль" Grid.Row='2' FontSize="10" VerticalAlignment="Center" Style="{StaticResource LabelGreen}" MouseDoubleClick="LabelMouseDoubleClick" />
         </StackPanel>
         
         
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="5">
-            <Button x:Name="BtnEnter" Click="BtnEnterClick" Content="Enter" Style="{DynamicResource ButtonUI}" Margin="2" TabIndex="4" Width="80" Height="25"/>
-            <Button x:Name="BtnCancel" Click="BtnCancelClick" Content="Cancel" Style="{DynamicResource ButtonUI}" Margin="2" TabIndex="5"  Width="80" Height="25"/>
+            <Button x:Name="BtnEnter" Click="BtnEnterClick" Content="Enter" Style="{DynamicResource ButtonUI}" Margin="2" TabIndex="3" Width="80" Height="25"/>
+            <Button x:Name="BtnCancel" Click="BtnCancelClick" Content="Cancel" Style="{DynamicResource ButtonUI}" Margin="2" TabIndex="4"  Width="80" Height="25"/>
             
         </StackPanel>
         

@@ -90,11 +90,11 @@
             
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5"  Height="auto" Width="200" Background="{StaticResource BackMap}">
                 <Image Width="240" Height="160" Stretch="Uniform" Margin="5" Source="{Binding Path=GetObjectPhoto}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                <TextBlock  HorizontalAlignment="Center"  Grid.Column="1" Margin="6" TextWrapping="Wrap" Text="{Binding Name}" Style="{DynamicResource Text}" Foreground="White" FontWeight="DemiBold"/>
+                <TextBlock   HorizontalAlignment="Center"  Grid.Column="1" Margin="6" TextWrapping="Wrap" Text="{Binding Name}" Style="{DynamicResource Text}" Foreground="White" FontWeight="DemiBold"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" Height="auto" Width="200" Background="{StaticResource BackMap}" >
-                <TextBlock Grid.Row="1" Grid.Column="1" Margin="6" TextWrapping="Wrap" Text="{Binding Description}" Style="{DynamicResource Text}" Foreground="White" />
+                <TextBlock x:Name="textblockInfo" Grid.Row="1" Grid.Column="1" Margin="6" TextWrapping="Wrap" Style="{DynamicResource Text}" Foreground="White" />
                 <Button x:Name="btnObject"  Content="Подробнее" Click="btnObjectClick" Margin="5" 
             HorizontalAlignment="Center" Style="{DynamicResource ButtonUIGreen}"/>
             </StackPanel>

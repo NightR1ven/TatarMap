@@ -54,6 +54,7 @@ namespace TatarCulturaWpf
                 int rols = (int)user.IdRols;
                 Manager.idUser = user.IdUser;
                 
+                
                 MainWindow mainWindow = new MainWindow(rols,user);
                 mainWindow.Owner = this;
                 this.Hide();
@@ -80,16 +81,9 @@ namespace TatarCulturaWpf
         {
             string log = TbLogin.Text;
             string pas = PbPassword.Password;
-            if (CheckerBox.IsChecked == true)
-            {
+
                 TbLogin.Text = log;
                 PbPassword.Password = pas;
-            }
-            //else
-            //{
-            //    TbLogin.Text = "";
-            //    PbPassword.Password = "";
-            //}
         }
 
         private void BtnRegistrationClick(object sender, RoutedEventArgs e)
@@ -103,6 +97,14 @@ namespace TatarCulturaWpf
         private void WindowClosed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void LabelMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            RecoverWindow recoverWindow = new RecoverWindow();
+            recoverWindow.Owner = this;
+            this.Hide();
+            recoverWindow.Show();
         }
     }
 }

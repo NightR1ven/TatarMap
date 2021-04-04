@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Kirill\source\repos\TatarCulturaWpf\TatarCulturaWpf\App.xaml
-17-1958045924
+211515862423
 21081564561
-33-537367284
+37387669266
 22-1475742214
-LoginWindow.xaml;MainWindow.xaml;Pages\AddCommentsPage.xaml;Pages\AddObjectPage.xaml;Pages\AddUserPage.xaml;Pages\CommentObjectPage.xaml;Pages\EventListPage.xaml;Pages\EventPage.xaml;Pages\KeyListPage.xaml;Pages\ListViewObjectPage.xaml;Pages\ObjectListPage.xaml;Pages\PageObject.xaml;Pages\PageUser.xaml;RegistrationWindow.xaml;Pages\UIStartMenuPage.xaml;Resources\Dictionary.xaml;Pages\UserListPage.xaml;
+LoginWindow.xaml;MainWindow.xaml;Pages\AddCommentsPage.xaml;Pages\AddEventPage.xaml;Pages\AddKeyPage.xaml;Pages\AddObjectPage.xaml;Pages\AddTypePage.xaml;Pages\AddUserPage.xaml;Pages\CommentObjectPage.xaml;Pages\EventListPage.xaml;Pages\EventPage.xaml;Pages\KeyListPage.xaml;Pages\ListViewObjectPage.xaml;Pages\ObjectListPage.xaml;Pages\PageObject.xaml;Pages\PageUser.xaml;RecoverWindow.xaml;RegistrationWindow.xaml;Pages\UIStartMenuPage.xaml;Resources\Dictionary.xaml;Pages\UserListPage.xaml;
 
 False
 

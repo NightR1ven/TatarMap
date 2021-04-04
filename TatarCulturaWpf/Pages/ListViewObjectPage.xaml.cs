@@ -47,10 +47,11 @@ namespace TatarCulturaWpf.Pages
             
             var obj= TatarCulturDbEntities.GetContext().Objects.ToList();
 
-
             LViewObject.ItemsSource = obj;
             _itemcount = LViewObject.Items.Count;
             TextBlockCount.Text = $"Результат запроса: {_itemcount} записей из {_itemcount}";
+
+
         }
 
        
@@ -119,7 +120,23 @@ namespace TatarCulturaWpf.Pages
                 MapTat.ZoomLevel = 15;
                 MapTat.Center = pinLocation;
                 this.DataContext = obj;
+                if (obj.Description == null)
+                { textblockInfo.Text = "Нет информации"; }
+                else if (obj.Description.Length>250)
+                {
+                    int text= obj.Description.Length - 250;
+                    var des = obj.Description;
+                    des = des.Substring(0, des.Length - text);
+                    des = des.Insert(des.Length, " ...");
+                    textblockInfo.Text = des;
+                }
+                else
+                {
+                    textblockInfo.Text = obj.Description;
+                }
                 
+                
+
             }
             else
             StackInfo.Visibility = Visibility.Collapsed;

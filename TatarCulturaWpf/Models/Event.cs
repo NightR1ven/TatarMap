@@ -27,10 +27,8 @@ namespace TatarCulturaWpf.Models
         public Nullable<int> Coin { get; set; }
         public Nullable<System.DateTime> DateStarEvent { get; set; }
         public Nullable<System.DateTime> DateEndEvent { get; set; }
-        public bool Active { get; set; }
         public string EventPhoto { get; set; }
         public Nullable<int> IdObject { get; set; }
-
 
         public string GetEventPhoto
         {
@@ -47,13 +45,7 @@ namespace TatarCulturaWpf.Models
             get
             {
                 if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
-                {
-                    if (Active)
-                        return true;
-
-                    else
-                        return false;
-                }
+                    return true;
                 else
                     return false;
 
@@ -65,13 +57,7 @@ namespace TatarCulturaWpf.Models
             get
             {
                 if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
-                {
-                    if (Active)
-                        return "#FFE9A865";
-
-                    else
-                        return "#262626";
-                }
+                    return "#FFE9A865";
                 else
                     return "#262626";
 
@@ -97,20 +83,34 @@ namespace TatarCulturaWpf.Models
             }
         }
 
+        public string GetKeyLabel
+        {
+            get
+            {
+                int x = 0;
+                foreach (Key z in Keys)
+                {
+                    if (z.Active == false)
+                        x++;
+                }
+
+                if (x == 0)
+                    return "Коды закончились";
+
+                return "Приобрести";
+
+            }
+        }
+
         public string GetDateLabel
         {
             get
             {
-                if (Active)
-                {
-                    if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
-                        return "Приобрести";
-                   
-                        return "Акция закончилась";
 
-                }
+                if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
+                    return "Приобрести";
 
-                    return "Акция закончилась";
+                return "Акция закончилась";
             }
         }
 
@@ -119,16 +119,10 @@ namespace TatarCulturaWpf.Models
             get
             {
                 if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
-                {
-                    if (Active)
-                        return "Visible";
+                    return "Visible";
 
-                    else
-                        return "Collapsed";
-                }
                 else
                     return "Collapsed";
-
 
             }
         }
@@ -138,13 +132,7 @@ namespace TatarCulturaWpf.Models
             get
             {
                 if (DateStarEvent <= DateTime.Now && DateTime.Now <= DateEndEvent)
-                {
-                    if (Active)
-                        return "Collapsed";
-
-                    else
-                        return "Visible";
-                }
+                    return "Collapsed";
                 else
                     return "Visible";
 
@@ -170,26 +158,7 @@ namespace TatarCulturaWpf.Models
             }
         }
 
-        public string GetKeyLabel
-        {
-            get
-            {
-                int x = 0;
-                foreach (Key z in Keys)
-                {
-                    if (z.Active == false)
-                        x++;
-                }
-
-                if (x == 0)
-                    return "Коды закончились";
-
-                return "Приобрести";
-
-            }
-        }
-
-        public string GetType
+        public string GetTypeObject
         {
             get
             {

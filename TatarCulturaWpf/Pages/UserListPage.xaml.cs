@@ -43,7 +43,21 @@ namespace TatarCulturaWpf
         private void BtnDeleteClick(object sender, RoutedEventArgs e)
         {
             var selectedUser = UserListDG.SelectedItems.Cast<User>().ToList();
-            MessageBoxResult messageBoxResult = MessageBox.Show($"Удалить {selectedUser.Count()} записей???", "Удаление", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            User info = selectedUser[0];
+
+            StringBuilder s = new StringBuilder();
+            if (info.Sales.Count > 0)
+                s.AppendLine($"Есть связанные записи c истории");
+            if (info.Comments.Count > 0)
+                s.AppendLine($"Есть связанные записи c комментариями");
+
+            if (s.Length > 0)
+            {
+                MessageBox.Show(s.ToString());
+            }
+
+            MessageBoxResult messageBoxResult = MessageBox.Show($"Удалить запись???", "Удаление", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+
 
             if (messageBoxResult == MessageBoxResult.OK)
             {
@@ -51,9 +65,20 @@ namespace TatarCulturaWpf
                 {
                     User x = selectedUser[0];
                     if (x.Sales.Count > 0)
-                        throw new Exception("Есть связанные записи c истории");
+                    {
+                        var saleUser = TatarCulturDbEntities.GetContext().Sales.Where(p => p.IdUser == x.IdUser).ToList();
+                        Sale sale = saleUser[0];
+                        TatarCulturDbEntities.GetContext().Sales.Remove(sale);
+                    }
                     if (x.Comments.Count > 0)
-                        throw new Exception("Есть связанные записи c комментариями");
+                    {
+                        var commentUser = TatarCulturDbEntities.GetContext().Comments.Where(p => p.IdUser == x.IdUser).ToList();
+                        Comment com = commentUser[0];
+                        TatarCulturDbEntities.GetContext().Comments.Remove(com);
+                    }
+
+
+
                     TatarCulturDbEntities.GetContext().Users.Remove(x);
                     TatarCulturDbEntities.GetContext().SaveChanges();
                     MessageBox.Show("Записи удалены");

@@ -25,8 +25,8 @@ namespace TatarCulturaWpf.Models
         public bool Active { get; set; }
         public int IdEvent { get; set; }
     
-        public virtual Event Event { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
+        public virtual Event Event { get; set; }
     }
 }

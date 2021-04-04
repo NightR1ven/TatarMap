@@ -5,23 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="73336e92571f4ab68131055477ec3eb7" Name="Diagram1" ZoomLevel="83">
-        <EntityTypeShape EntityType="TatarCulturDbModel.Event" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TatarCulturDbModel.Type" Width="1.5" PointX="2.5" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TatarCulturDbModel.User" Width="1.5" PointX="2.875" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TatarCulturDbModel.UserRol" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <AssociationConnector Association="TatarCulturDbModel.FK_User_Event" ManuallyRouted="false" />
         <AssociationConnector Association="TatarCulturDbModel.FK_User_UserRols" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TatarCulturDbModel.Object" Width="1.5" PointX="4.625" PointY="4.5" />
         <EntityTypeShape EntityType="TatarCulturDbModel.sysdiagram" Width="1.5" PointX="6.5" PointY="4.375" />
         <AssociationConnector Association="TatarCulturDbModel.FK_Object_Type" />
         <EntityTypeShape EntityType="TatarCulturDbModel.Key" Width="1.5" PointX="3" PointY="9" />
         <EntityTypeShape EntityType="TatarCulturDbModel.Sale" Width="1.5" PointX="7.25" PointY="7.25" />
-        <AssociationConnector Association="TatarCulturDbModel.FK_Key_Event" />
         <AssociationConnector Association="TatarCulturDbModel.FK_Sale_Key" />
         <AssociationConnector Association="TatarCulturDbModel.FK_Sale_User" />
         <EntityTypeShape EntityType="TatarCulturDbModel.Comment" Width="1.5" PointX="6.875" PointY="1.25" />
         <AssociationConnector Association="TatarCulturDbModel.FK_Comment_Object" />
         <AssociationConnector Association="TatarCulturDbModel.FK_Comment_User" />
+        <EntityTypeShape EntityType="TatarCulturDbModel.Event" Width="1.5" PointX="0.5" PointY="7.75" />
+        <AssociationConnector Association="TatarCulturDbModel.FK_Event_Object" />
+        <AssociationConnector Association="TatarCulturDbModel.FK_Key_Event" />
+        <AssociationConnector Association="TatarCulturDbModel.FK_User_Event" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

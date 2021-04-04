@@ -29,6 +29,7 @@ namespace TatarCulturaWpf.Models
         public Nullable<int> Coin { get; set; }
         public Nullable<int> IdRols { get; set; }
         public string UserPhoto { get; set; }
+        public string Mail { get; set; }
 
         public string GetUserPhoto
         {
@@ -40,11 +41,12 @@ namespace TatarCulturaWpf.Models
             }
         }
 
-        public virtual Event Event { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
         public virtual UserRol UserRol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual Event Event { get; set; }
     }
 }

@@ -18,9 +18,6 @@ namespace TatarCulturaWpf.Models
         public int IdKey { get; set; }
         public int IdUser { get; set; }
         public Nullable<System.DateTime> SaleDate { get; set; }
-    
-        public virtual Key Key { get; set; }
-        public virtual User User { get; set; }
 
         public string GetEvent
         {
@@ -45,5 +42,8 @@ namespace TatarCulturaWpf.Models
                 return (DateTime)Key.Event.DateEndEvent;
             }
         }
+
+        public virtual Key Key { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -32,7 +32,7 @@
             <Label Grid.Row="1" Grid.Column="0" Content="Логин:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18" Style="{DynamicResource LabelWhite}"/>
             <Label Grid.Row="2" Grid.Column="0" Content="Пароль:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18" Style="{DynamicResource LabelWhite}"/>
             <Label Grid.Row="3" Grid.Column="0" Content="Пароль повторно:" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{DynamicResource LabelWhite}"/>
-            <Label Grid.Row="4" Grid.Column="0" Content="Роль:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{DynamicResource LabelWhite}"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Роль:" x:Name="RolLabel" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18"  Style="{DynamicResource LabelWhite}"/>
             <Label Grid.Row="6" Grid.Column="0" Content="Картинка:" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="20,0" FontSize="18" Style="{DynamicResource LabelWhite}"/>
 
 

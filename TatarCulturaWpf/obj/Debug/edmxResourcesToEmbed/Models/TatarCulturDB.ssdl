@@ -19,7 +19,6 @@
     <Property Name="Coin" Type="int" />
     <Property Name="DateStarEvent" Type="date" />
     <Property Name="DateEndEvent" Type="date" />
-    <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="EventPhoto" Type="nvarchar(max)" />
     <Property Name="IdObject" Type="int" />
   </EntityType>
@@ -81,6 +80,7 @@
     <Property Name="Coin" Type="int" />
     <Property Name="IdRols" Type="int" />
     <Property Name="UserPhoto" Type="nvarchar(max)" />
+    <Property Name="Mail" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="UserRols">
     <Key>

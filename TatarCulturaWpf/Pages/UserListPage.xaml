@@ -31,7 +31,7 @@
 
         </WrapPanel>
         
-        <DataGrid x:Name="UserListDG" AutoGenerateColumns="False" TabIndex="1" Grid.Row="1" >
+        <DataGrid x:Name="UserListDG" AutoGenerateColumns="False" TabIndex="1" Grid.Row="1" IsReadOnly="True"  SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="auto" Header="Редактировать">
                     <DataGridTemplateColumn.CellTemplate>

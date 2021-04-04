@@ -29,9 +29,9 @@
         <Label Content="{Binding Object.Name}" HorizontalAlignment="Left" Width="100" Style="{StaticResource LabelGreen}"/>
         <DataGrid Grid.Row="1" x:Name="CommentListDG" AutoGenerateColumns="False" TabIndex="1" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding IdUser}" Header="Id User" Width="*"/>
-                <DataGridTextColumn Binding="{Binding User.Login}" Header="Login" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding Comment1}" Header="Comment" Width="6*"/>
+                <DataGridTextColumn Binding="{Binding IdUser}" Header="Id Пользователя" Width="*"/>
+                <DataGridTextColumn Binding="{Binding User.Login}" Header="Логин" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Comment1}" Header="Комментарий" Width="6*"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -54,8 +54,8 @@ namespace TatarCulturaWpf.Pages
                 s.AppendLine("Поле описание пустое");
             if (_currentObject.Type == null)
                 s.AppendLine("Тип не выбрана");
-            //if (string.IsNullOrWhiteSpace(_photoName))
-            //    s.AppendLine("фото не выбрано пустое");
+            if (string.IsNullOrWhiteSpace(_photoName))
+                s.AppendLine("фото не выбрано пустое");
 
             if (!string.IsNullOrWhiteSpace(tbLongitude.Text))
             {
@@ -183,6 +183,11 @@ namespace TatarCulturaWpf.Pages
             {
                 TatarCulturDbEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
             }
+        }
+
+        private void BtnCombClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddTypePage());
         }
     }
 }

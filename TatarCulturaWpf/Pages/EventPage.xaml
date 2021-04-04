@@ -29,6 +29,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="250" />
                             <RowDefinition Height="50" />
+                            <RowDefinition Height="30" />
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -41,7 +42,9 @@
                         </Image>
                         <TextBlock Text="{Binding Name}" Grid.Row="1" Width="180" Padding="3" Height="50" TextAlignment="Center" TextWrapping="Wrap"
                                 Style="{StaticResource Text}"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="5 5"/>
-                        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding GetTypeObject}" Grid.Row="2" Width="180" Padding="3" Height="30" TextAlignment="Center" TextWrapping="Wrap"
+                                Style="{StaticResource Text}"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Margin="5 5"/>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="c " TextAlignment="Center" Style="{StaticResource Text}"
                                    FontSize="16"/>
                             <TextBlock Text="{Binding DateStarEvent,  StringFormat=\{0:d\}, ConverterCulture=ru}" Grid.Row="0" TextAlignment="Center" TextWrapping="Wrap"
@@ -51,7 +54,7 @@
                             <TextBlock Text="{Binding DateEndEvent, StringFormat=\{0:d\}, ConverterCulture=ru}" Grid.Row="0" TextAlignment="Center" TextWrapping="Wrap"
                                  Style="{StaticResource Text}"  HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="12" Margin="5 5"/>
                         </StackPanel>
-                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="Стоимость: " Height="20" TextAlignment="Center"
                                  Style="{StaticResource Text}"  FontSize="16"/>
                             <TextBlock Text="{Binding Coin}"  Height="30" Grid.Row="0" TextAlignment="Center" TextWrapping="Wrap"

@@ -26,6 +26,10 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" Grid.Row="0" VerticalAlignment="Top"
+                     HorizontalAlignment="Left" Panel.ZIndex="3" Style="{DynamicResource ButtonUIGreen}" TabIndex="1"/>
+                <Button x:Name="btnAccount" Content="Редактиорвать" Click="btnAccountClick" Margin="5" Grid.Row="0" VerticalAlignment="Top"
+                     HorizontalAlignment="Right" Panel.ZIndex="3" Style="{DynamicResource ButtonUIGreen}" TabIndex="1"/>
                 <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <Label Content="{Binding Login}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{StaticResource LabelGreen}"  FontSize="46"/>
                     <Label Content="{Binding UserRol.NameRols}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Style="{StaticResource LabelObject}"/>
@@ -38,8 +42,7 @@
 
 
             </Grid>
-            <Button x:Name="btnBack" Content="Вернуться" Click="btnBackClick" Margin="5" 
-                     HorizontalAlignment="Left" Panel.ZIndex="3" Style="{DynamicResource ButtonUIGreen}" TabIndex="1"/>
+           
             <Image Source="/TatarCulturaWpf;component/Resources/background.jpg" Stretch="UniformToFill" Grid.Row="0" Opacity="0.6" Panel.ZIndex="1"/>
             <TextBlock Grid.Row="0" Background="Black" Panel.ZIndex="0"/>
             <Ellipse Width="75" Height="75" Panel.ZIndex="2">

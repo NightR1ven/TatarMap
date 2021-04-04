@@ -47,5 +47,10 @@ namespace TatarCulturaWpf.Pages
             ListBoxComment.Visibility = Visibility.Collapsed;
             ListBoxKey.Visibility = Visibility.Visible;
         }
+
+        private void btnAccountClick(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddUserPage((sender as Button).DataContext as User, Manager.idUser));
+        }
     }
 }
